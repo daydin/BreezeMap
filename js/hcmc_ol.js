@@ -37,7 +37,7 @@
  *               relationship, and a navigation panel is
  *               required.
  * @author <a href="mailto:mholmes@uvic.ca">Martin Holmes</a>
- * @version 0.1.1
+ * @version 1.2b for OL 9.2.3
  */
 
 /**
@@ -102,6 +102,21 @@ hol.captions['en'].strPlay               = 'Play the timeline.'
 hol.captions['en'].strStopPlay           = 'Stop the timeline playback.'
 hol.captions['en'].strStepForward        = 'Step forward in the timeline.'
 hol.captions['en'].strStepBackward       = 'Step backward in the timeline.'
+
+/** @constant hol.VERSION 
+ *  Version of this library.
+ *  @type {string}
+ *  @default
+*/
+hol.VERSION = '1.2b';
+
+/** @constant hol.OLVERSION 
+ *  Latest release of OpenLayers with which this codebase was tested.
+ *  @type {string}
+ *  @default
+*/
+hol.OLVERSION = '9.2.3';
+
 /**
  * Constants in hol namespace used
  * for tracking the process of complex
@@ -118,7 +133,7 @@ hol.NAV_IDLE = 0;
 
 /** @constant hol.NAV_SHOWHIDING_FEATURES Another
  *                     user action has triggered the 
- *                     showing/hiding of features, and that
+ *                     showing/hiding of features, and thatusing
  *                     process is not yet complete.
  *  @type {number}
  *  @default
@@ -166,6 +181,20 @@ hol.NAV_SHOWHIDING_CATEGORY = 4;
  * @constructor
  */
 hol.Util = function () {};
+
+/**
+ * A utility function which shows the current version of this code and 
+ * the last version of OpenLayers with which it was tested.
+ * @function hol.Util.showVersion
+ * @memberof hol.Util
+ * @description Outputs the version string to the console and returns it too.
+ * @returns {string} The same string as is output to the console.
+ */
+hol.Util.showVersion = function(){
+  var verString = 'hol (HCMC OpenLayers) JS version ' + hol.VERSION + ' tested with OpenLayers ' + hol.OLVERSION + '.';
+  console.log(verString);
+  return verString;
+};
 
 /**
  * A utility function borrowed with thanks from here:
