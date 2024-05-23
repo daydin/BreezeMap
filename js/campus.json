@@ -114,8 +114,7 @@
                   "pos" : 3 } ] } ],
           "timeline" : 
           { "timelinePoints" : 
-            [ "1961-01-01T00:00:00\/1961-12-31T23:59:59\/1961",
-              "1962-01-01T00:00:00\/1962-12-31T23:59:59\/1962",
+            [ "1962-01-01T00:00:00\/1962-12-31T23:59:59\/1962",
               "1963-01-01T00:00:00\/1963-12-31T23:59:59\/1963",
               "1964-01-01T00:00:00\/1964-12-31T23:59:59\/1964",
               "1965-01-01T00:00:00\/1965-12-31T23:59:59\/1965",
@@ -176,28 +175,21 @@
               "2020-01-01T00:00:00\/2020-12-31T23:59:59\/2020" ],
             "richTimelinePoints" : 
             [ 
-              { "tp" : "1961-01-01T00:00:00\/1961-12-31T23:59:59\/1961",
-                "featIds" : 
-                [ "wayStudentUnion" ] },
-              
               { "tp" : "1962-01-01T00:00:00\/1962-12-31T23:59:59\/1962",
                 "featIds" : 
-                [ "bldgClearihue",
-                  "wayStudentUnion" ] },
+                [ "bldgClearihue" ] },
               
               { "tp" : "1963-01-01T00:00:00\/1963-12-31T23:59:59\/1963",
                 "featIds" : 
                 [ "bldgClearihue",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1964-01-01T00:00:00\/1964-12-31T23:59:59\/1964",
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgElliott",
                   "bldgMearns",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1965-01-01T00:00:00\/1965-12-31T23:59:59\/1965",
                 "featIds" : 
@@ -205,8 +197,7 @@
                   "bldgElliott",
                   "bldgMearns",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1966-01-01T00:00:00\/1966-12-31T23:59:59\/1966",
                 "featIds" : 
@@ -215,8 +206,7 @@
                   "bldgCornett",
                   "bldgMearns",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1967-01-01T00:00:00\/1967-12-31T23:59:59\/1967",
                 "featIds" : 
@@ -227,8 +217,7 @@
                   "bldgMacLaurin",
                   "bldgMusic",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1968-01-01T00:00:00\/1968-12-31T23:59:59\/1968",
                 "featIds" : 
@@ -240,8 +229,7 @@
                   "bldgMacLaurin",
                   "bldgMusic",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1969-01-01T00:00:00\/1969-12-31T23:59:59\/1969",
                 "featIds" : 
@@ -254,8 +242,7 @@
                   "bldgMacLaurin",
                   "bldgMusic",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1970-01-01T00:00:00\/1970-12-31T23:59:59\/1970",
                 "featIds" : 
@@ -269,8 +256,7 @@
                   "bldgMacLaurin",
                   "bldgMusic",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1971-01-01T00:00:00\/1971-12-31T23:59:59\/1971",
                 "featIds" : 
@@ -284,8 +270,7 @@
                   "bldgMacLaurin",
                   "bldgMusic",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1972-01-01T00:00:00\/1972-12-31T23:59:59\/1972",
                 "featIds" : 
@@ -300,8 +285,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1973-01-01T00:00:00\/1973-12-31T23:59:59\/1973",
                 "featIds" : 
@@ -316,8 +300,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1974-01-01T00:00:00\/1974-12-31T23:59:59\/1974",
                 "featIds" : 
@@ -332,8 +315,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1975-01-01T00:00:00\/1975-12-31T23:59:59\/1975",
                 "featIds" : 
@@ -349,8 +331,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1976-01-01T00:00:00\/1976-12-31T23:59:59\/1976",
                 "featIds" : 
@@ -366,8 +347,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1977-01-01T00:00:00\/1977-12-31T23:59:59\/1977",
                 "featIds" : 
@@ -383,8 +363,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1978-01-01T00:00:00\/1978-12-31T23:59:59\/1978",
                 "featIds" : 
@@ -401,8 +380,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1979-01-01T00:00:00\/1979-12-31T23:59:59\/1979",
                 "featIds" : 
@@ -419,8 +397,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1980-01-01T00:00:00\/1980-12-31T23:59:59\/1980",
                 "featIds" : 
@@ -438,8 +415,7 @@
                   "bldgMusic",
                   "bldgCunningham",
                   "bldgSvc",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1981-01-01T00:00:00\/1981-12-31T23:59:59\/1981",
                 "featIds" : 
@@ -458,8 +434,7 @@
                   "bldgCunningham",
                   "bldgSvc",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1982-01-01T00:00:00\/1982-12-31T23:59:59\/1982",
                 "featIds" : 
@@ -479,8 +454,7 @@
                   "bldgUniversityClub",
                   "bldgSvc",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1983-01-01T00:00:00\/1983-12-31T23:59:59\/1983",
                 "featIds" : 
@@ -500,8 +474,7 @@
                   "bldgUniversityClub",
                   "bldgSvc",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1984-01-01T00:00:00\/1984-12-31T23:59:59\/1984",
                 "featIds" : 
@@ -521,8 +494,7 @@
                   "bldgUniversityClub",
                   "bldgSvc",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1985-01-01T00:00:00\/1985-12-31T23:59:59\/1985",
                 "featIds" : 
@@ -543,8 +515,7 @@
                   "bldgUniversityClub",
                   "bldgSvc",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1986-01-01T00:00:00\/1986-12-31T23:59:59\/1986",
                 "featIds" : 
@@ -566,8 +537,7 @@
                   "bldgUniversityClub",
                   "bldgSvc",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1987-01-01T00:00:00\/1987-12-31T23:59:59\/1987",
                 "featIds" : 
@@ -590,8 +560,7 @@
                   "bldgSvc",
                   "bldgAquatic",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1988-01-01T00:00:00\/1988-12-31T23:59:59\/1988",
                 "featIds" : 
@@ -614,8 +583,7 @@
                   "bldgSvc",
                   "bldgAquatic",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1989-01-01T00:00:00\/1989-12-31T23:59:59\/1989",
                 "featIds" : 
@@ -638,8 +606,7 @@
                   "bldgSvc",
                   "bldgAquatic",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1990-01-01T00:00:00\/1990-12-31T23:59:59\/1990",
                 "featIds" : 
@@ -663,8 +630,7 @@
                   "bldgSvc",
                   "bldgAquatic",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1991-01-01T00:00:00\/1991-12-31T23:59:59\/1991",
                 "featIds" : 
@@ -689,8 +655,7 @@
                   "bldgAquatic",
                   "bldgFineArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1992-01-01T00:00:00\/1992-12-31T23:59:59\/1992",
                 "featIds" : 
@@ -715,8 +680,7 @@
                   "bldgAquatic",
                   "bldgFineArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1993-01-01T00:00:00\/1993-12-31T23:59:59\/1993",
                 "featIds" : 
@@ -742,8 +706,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1994-01-01T00:00:00\/1994-12-31T23:59:59\/1994",
                 "featIds" : 
@@ -769,8 +732,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1995-01-01T00:00:00\/1995-12-31T23:59:59\/1995",
                 "featIds" : 
@@ -797,8 +759,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1996-01-01T00:00:00\/1996-12-31T23:59:59\/1996",
                 "featIds" : 
@@ -826,8 +787,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1997-01-01T00:00:00\/1997-12-31T23:59:59\/1997",
                 "featIds" : 
@@ -856,8 +816,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1998-01-01T00:00:00\/1998-12-31T23:59:59\/1998",
                 "featIds" : 
@@ -886,8 +845,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "1999-01-01T00:00:00\/1999-12-31T23:59:59\/1999",
                 "featIds" : 
@@ -917,8 +875,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2000-01-01T00:00:00\/2000-12-31T23:59:59\/2000",
                 "featIds" : 
@@ -950,8 +907,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2001-01-01T00:00:00\/2001-12-31T23:59:59\/2001",
                 "featIds" : 
@@ -981,8 +937,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2002-01-01T00:00:00\/2002-12-31T23:59:59\/2002",
                 "featIds" : 
@@ -1012,8 +967,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2003-01-01T00:00:00\/2003-12-31T23:59:59\/2003",
                 "featIds" : 
@@ -1044,8 +998,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2004-01-01T00:00:00\/2004-12-31T23:59:59\/2004",
                 "featIds" : 
@@ -1078,8 +1031,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2005-01-01T00:00:00\/2005-12-31T23:59:59\/2005",
                 "featIds" : 
@@ -1111,8 +1063,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2006-01-01T00:00:00\/2006-12-31T23:59:59\/2006",
                 "featIds" : 
@@ -1144,8 +1095,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2007-01-01T00:00:00\/2007-12-31T23:59:59\/2007",
                 "featIds" : 
@@ -1177,8 +1127,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2008-01-01T00:00:00\/2008-12-31T23:59:59\/2008",
                 "featIds" : 
@@ -1213,8 +1162,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2009-01-01T00:00:00\/2009-12-31T23:59:59\/2009",
                 "featIds" : 
@@ -1249,8 +1197,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2010-01-01T00:00:00\/2010-12-31T23:59:59\/2010",
                 "featIds" : 
@@ -1286,8 +1233,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2011-01-01T00:00:00\/2011-12-31T23:59:59\/2011",
                 "featIds" : 
@@ -1324,8 +1270,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2012-01-01T00:00:00\/2012-12-31T23:59:59\/2012",
                 "featIds" : 
@@ -1362,8 +1307,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2013-01-01T00:00:00\/2013-12-31T23:59:59\/2013",
                 "featIds" : 
@@ -1400,8 +1344,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2014-01-01T00:00:00\/2014-12-31T23:59:59\/2014",
                 "featIds" : 
@@ -1438,8 +1381,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2015-01-01T00:00:00\/2015-12-31T23:59:59\/2015",
                 "featIds" : 
@@ -1477,8 +1419,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2016-01-01T00:00:00\/2016-12-31T23:59:59\/2016",
                 "featIds" : 
@@ -1517,8 +1458,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2017-01-01T00:00:00\/2017-12-31T23:59:59\/2017",
                 "featIds" : 
@@ -1556,8 +1496,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2018-01-01T00:00:00\/2018-12-31T23:59:59\/2018",
                 "featIds" : 
@@ -1595,8 +1534,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2019-01-01T00:00:00\/2019-12-31T23:59:59\/2019",
                 "featIds" : 
@@ -1634,8 +1572,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] },
+                  "bldgStudentUnion" ] },
               
               { "tp" : "2020-01-01T00:00:00\/2020-12-31T23:59:59\/2020",
                 "featIds" : 
@@ -1674,8 +1611,7 @@
                   "bldgFineArts",
                   "bldgVisualArts",
                   "bldgPhoenixTheatre",
-                  "bldgStudentUnion",
-                  "wayStudentUnion" ] } ] } } },
+                  "bldgStudentUnion" ] } ] } } },
       
       { "type" : "Feature",
         "id" : "bldgClearihue",
@@ -8178,9 +8114,6 @@
           "links" : 
           [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sub.php\/" ],
           "showOnMenu" : true,
-          "dateTimes" : 
-          [ 
-            { "from" : "1961-01-01T00:00:00" } ],
           "taxonomies" : 
           [ 
             { "id" : "transp",

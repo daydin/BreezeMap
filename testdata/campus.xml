@@ -808,7 +808,7 @@
                                 </item>
                             </list>
                         </desc>
-                        <location type="GeoJSON"><desc><date from-iso="1961"/></desc>
+                        <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308866,48.465173]}</geo>
                         </location>
                     </place>

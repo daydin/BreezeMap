@@ -2980,6 +2980,7 @@ hol.VectorLayer.prototype.timelineChange = function(sender){
 
     if (this.timelinePanZoom){
       let feats = [...featNumsToKeepShowing, ...featNumsToShowNew];
+      console.log(feats);
       if ((feats.length > 1)||((feats.length === 1) && (this.features[feats[0]].getGeometry().GeometryType !== 'Point'))){
         this.centerOnFeatures(feats);
       }
