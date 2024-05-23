@@ -118,6 +118,10 @@
     </java>
   </target>
 
+  <!-- Note that this no longer works as it did, and it's recommended instead 
+       to do a manual update of the ol.js, ol.js.map, and ol.css files from 
+       the OL site, in a separate branch, before testing and merging back 
+       into dev. -->
   <target name="getOL" if:true="${buildingTestsOnly}">
     <echo message="${echo.separator}"/>
     <echo message="Downloading the latest stable release of OpenLayers."/>
@@ -212,7 +216,7 @@
     <antcall target="cleanup"/>
     <antcall target="buildCss"/>
     <antcall target="teiToGeoJSON"/>
-    <antcall target="getOL"/>
+    <!--<antcall target="getOL"/>-->
     <antcall target="minify"/>
     <antcall target="createTestSite"/>
     <antcall target="createUserHtml"/>
