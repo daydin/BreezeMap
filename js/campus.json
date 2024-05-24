@@ -1133,7 +1133,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgIntFaith",
@@ -1168,7 +1167,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgIntFaith",
@@ -1203,7 +1201,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgIntFaith",
@@ -1239,7 +1236,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgIntFaith",
@@ -1276,7 +1272,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgIntFaith",
@@ -1313,7 +1308,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgIntFaith",
@@ -1350,7 +1344,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgIntFaith",
@@ -1387,7 +1380,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgCARSA",
@@ -1425,7 +1417,6 @@
                 "featIds" : 
                 [ "bldgClearihue",
                   "bldgFraser",
-                  "bldgAdminServices",
                   "bldgMichaelWilliams",
                   "bldgContStudies",
                   "bldgMcKinnon",
@@ -2240,91 +2231,6 @@
                   "pos" : 1 } ] } ] } },
       
       { "type" : "Feature",
-        "id" : "bldgAdminServices",
-        "geometry" : 
-        { "type" : "Polygon",
-          "coordinates" : 
-          [ 
-            [ 
-              [ -123.314584,
-                48.466308 ],
-              
-              [ -123.314365,
-                48.466364 ],
-              
-              [ -123.314226,
-                48.466138 ],
-              
-              [ -123.31411,
-                48.466147 ],
-              
-              [ -123.314104,
-                48.466117 ],
-              
-              [ -123.31398,
-                48.466127 ],
-              
-              [ -123.31399,
-                48.466174 ],
-              
-              [ -123.313576,
-                48.466205 ],
-              
-              [ -123.313556,
-                48.466097 ],
-              
-              [ -123.313575,
-                48.466096 ],
-              
-              [ -123.313568,
-                48.466048 ],
-              
-              [ -123.313548,
-                48.466049 ],
-              
-              [ -123.313528,
-                48.465938 ],
-              
-              [ -123.313947,
-                48.465906 ],
-              
-              [ -123.313961,
-                48.465989 ],
-              
-              [ -123.314134,
-                48.465975 ],
-              
-              [ -123.314078,
-                48.465889 ],
-              
-              [ -123.314308,
-                48.465829 ],
-              
-              [ -123.314584,
-                48.466308 ] ] ] },
-        "properties" : 
-        { "name" : "Administrative Services Building",
-          "desc" : "...",
-          "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/mwb.php" ],
-          "showOnMenu" : true,
-          "dateTimes" : 
-          [ 
-            { "from" : "2008-01-01T00:00:00",
-              "to" : "2016-11-16T23:59:59" } ],
-          "taxonomies" : 
-          [ 
-            { "id" : "bldg",
-              "name" : "Buildings",
-              "pos" : 1,
-              "categories" : 
-              [ 
-                { "id" : "bldgAdmin",
-                  "name" : "Administrative",
-                  "desc" : "Buildings with administrative offices.",
-                  "pos" : 2 } ] } ] } },
-      
-      { "type" : "Feature",
         "id" : "bldgMichaelWilliams",
         "geometry" : 
         { "type" : "Polygon",
@@ -2391,7 +2297,7 @@
         { "name" : "Michael Williams Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/mwb.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/michael-williams.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 

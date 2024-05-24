@@ -945,16 +945,19 @@ hol.VectorLayer = function (olMap, featuresUrl, options){
 //Next we create a div for displaying external retrieved documents.
     this.docDisplayDiv = document.createElement('div');
     this.docDisplayDiv.setAttribute('id', 'holDocDisplay');
+//We need to avoid this thing flashing on the screen just when it's added to the DOM.    
+    this.docDisplayDiv.setAttribute('style', 'display: none;');
+    this.docDisplayDiv.classList.add('hidden');
     closeBtn = document.createElement('span');
     closeBtn.setAttribute('class', 'closeBtn');
     closeBtn.appendChild(document.createTextNode(this.captions.strCloseX));
-    //closeBtn.addEventListener('click', function(e){e.target.parentNode.style.display = 'none'; this.docDisplayFrame.setAttribute('src', '');}.bind(this), false);
-    closeBtn.addEventListener('click', function(e){e.target.parentNode.style.left = '-21rem'; this.docDisplayFrame.setAttribute('src', '');}.bind(this), false);
+    closeBtn.addEventListener('click', function(e){e.target.parentNode.classList.add('hidden'); this.docDisplayFrame.setAttribute('src', '');}.bind(this), false);
     this.docDisplayDiv.appendChild(closeBtn);
     this.docDisplayFrame = document.createElement('iframe');
     this.docDisplayFrame.setAttribute('id', 'holDocDisplayFrame');
     this.docDisplayDiv.appendChild(this.docDisplayFrame);
     this.docBody.appendChild(this.docDisplayDiv);
+    this.docDisplayDiv.setAttribute('style', '');
     
 //Add an event listener to fix hol: links whenever a document is loaded.
     this.docDisplayFrame.addEventListener('load', function(){try{this.rewriteHolLinks(this.docDisplayFrame.contentDocument.getElementsByTagName('body')[0]);}catch(e){}}.bind(this), false);
@@ -3870,7 +3873,8 @@ hol.VectorLayer.prototype.parseSearch = function(){
   
 //Hide the document display box.
   //this.docDisplayDiv.style.display = 'none';
-  this.docDisplayDiv.style.left = '-21rem';
+  //this.docDisplayDiv.style.left = '-21rem';
+  this.docDisplayDiv.classList.add('hidden');
   this.docDisplayFrame.src = '';
 
   try{
@@ -4087,7 +4091,7 @@ hol.VectorLayer.prototype.doLocationSearch = function(doSearch){
 hol.VectorLayer.prototype.showDocument = function(docPath){
   try{
     this.docDisplayFrame.setAttribute('src', this.linkPrefix + docPath);
-    this.docDisplayDiv.style.left = '0';
+    this.docDisplayDiv.classList.remove('hidden');
 //TODO: MAKE THIS AN EVENT LISTENER!
     //window.setTimeout(function(){this.rewriteHolLinks(this.docDisplayFrame.contentDocument.getElementsByTagName('body')[0]);}.bind(this), 100);
     return true;
