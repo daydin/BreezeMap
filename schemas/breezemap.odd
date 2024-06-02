@@ -400,8 +400,10 @@
            
            <elementSpec ident="location" mode="change">
              <content>
-               <elementRef key="desc" minOccurs="0" maxOccurs="1"/>
-               <elementRef key="geo" minOccurs="1" maxOccurs="1"/>
+               <sequence>
+                 <elementRef key="desc" minOccurs="0" maxOccurs="1"/>
+                 <elementRef key="geo" minOccurs="1" maxOccurs="1"/>
+               </sequence>
              </content>
              <constraintSpec ident="onlyLineStringsAreDirectional" scheme="schematron">
                <constraint>
@@ -509,15 +511,19 @@
            
            <elementSpec ident="teiHeader" mode="change">
              <content>
-               <elementRef key="fileDesc"/>
-               <elementRef key="encodingDesc"/>
+               <sequence>
+                 <elementRef key="fileDesc"/>
+                 <elementRef key="encodingDesc"/>
+               </sequence>
              </content>
            </elementSpec>
            
            <elementSpec ident="body" mode="change">
              <content>
-               <elementRef key="head"/>
-               <elementRef key="div"/>
+               <sequence>
+                 <elementRef key="head"/>
+                 <elementRef key="div"/>
+               </sequence>
              </content>
            </elementSpec>
            

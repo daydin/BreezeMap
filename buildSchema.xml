@@ -31,7 +31,7 @@
       <param name="selectedSchema" expression="${selectedSchema}" if="selectedSchema"/>
       <param name="verbose" expression="${verbose}" if="verbose"/>
     </xslt>
-    <buildgeneric type="relaxng" xsl="${teiPlugin}/xml/tei/stylesheet/profiles/tei/relaxng/to.xsl" in="${basedir}/schemas/breezemap.odd.processedodd" out="${basedir}/schemas/breezemap.rng"/>
+    <buildgeneric type="relaxng" xsl="${teiPlugin}/xml/tei/stylesheet/profiles/tei/rng/to.xsl" in="${basedir}/schemas/breezemap.odd.processedodd" out="${basedir}/schemas/breezemap.rng"/>
   </target> 
   
   <target name="ODDToDocumentation">

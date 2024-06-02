@@ -31,7 +31,7 @@
 
 /**
  * @fileOverview Convenience library for rapidly building
- *               OpenLayers3-based maps with complex
+ *               OpenLayers-based maps with complex
  *               vector layers, where features are sorted
  *               into multiple categories in a many-to-many
  *               relationship, and a navigation panel is
