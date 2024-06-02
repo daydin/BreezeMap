@@ -228,6 +228,57 @@
           into the TEI file.</p>
         </div>
         
+        <div xml:id="linksInPlaces">
+          <head>Links in place descriptions</head>
+          <p>In the description of a place, you may wish to provide links to 
+          external resources. There are three ways of doing this. First, you 
+          may use the TEI <gi>ref</gi> element inside a <gi>desc</gi> element
+          to provide a simple link to an external site:
+          
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <desc>Learn more about elephants on 
+                <ref target="https://en.wikipedia.org/wiki/Elephant">Wikipedia</ref>.</desc>
+            </egXML>
+          
+          This will obviously take the user away from the map page to the external page.
+          Alternatively, you can provide special <soCalled>Read more...</soCalled> links
+            using a special structure inside a <gi>desc</gi> element:
+            
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+            <place xml:id="bldgHickman" corresp="#bldgAdmin #bldgTeaching">
+              <placeName>Hickman Building</placeName>
+              <desc>...</desc>
+              <desc>
+                <list>
+                  <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/hickman.php"/></item>
+                </list>
+              </desc>
+              <location type="GeoJSON">...</location>
+            </place>
+            </egXML>
+        
+            This will be turned into a link whose clickable text is <q>Read more...</q>, but clicking
+            it will not take the user away from the map site; instead, the target page will 
+            appear in a frame in a box which slides out from the left of the map. Obviously, if you
+            use this technique, you will have to ensure that the correct permissions are available so
+            that the page in question is allowed to be rendered inside a frame on your map site.
+          </p>
+          
+          <p>If the <q>Read more...</q> mechanism is too simplistic, and you would rather use a natural
+          link in running text but have the content show up in the side box, you can use the <code>box:</code>
+          prefix, like this:
+          
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <desc>Learn more about elephants on 
+                <ref target="box:elephants.html">my Elephants page</ref>.</desc>
+            </egXML>
+          
+          This link will also load the content in the slideout box.
+          
+          </p>
+          
+        </div>
+        
         <div xml:id="options">
           <head>Options you can pass to the map in JavaScript</head>
           <p>Here's an example of initializing the map in JS:</p>
