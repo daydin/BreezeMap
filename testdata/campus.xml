@@ -92,7 +92,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/cle.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/clearihue.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -105,7 +105,7 @@
                     <desc>
                       <list>
                         <item>
-                          <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/fra.php"/>
+                            <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/fraser.php"/>
                         </item>
                       </list>
                     </desc>
@@ -119,7 +119,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/fra.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/fraser.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -148,7 +148,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/cst.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/continuing-studies.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -162,7 +162,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/mck.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/mckinnon.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -176,7 +176,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/carsa.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/carsa.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -190,13 +190,27 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/cha.php"/>
+                                    <ptr target="https://www.uvic.ca/campus/multifaith-centre/index.php"/>
                                 </item>
                             </list>
                         </desc>
-                        <location type="GeoJSON"><desc><date from-iso="1985"/></desc>
+                        <location type="GeoJSON"><desc><date from-iso="1985" to-iso="2019"/></desc>
 							<geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.317114,48.460783],[-123.317021,48.46079],[-123.31702,48.460781],[-123.316873,48.460793],[-123.316829,48.460537],[-123.317068,48.460518],[-123.317076,48.460559],[-123.317158,48.460553],[-123.317189,48.460728],[-123.317106,48.460734],[-123.317114,48.460783]]]}</geo>
 						</location>
+                    </place>
+                    <place xml:id="bldgMultiFaith" corresp="#bldgPerf">
+                        <placeName>Multifaith Centre</placeName>
+                        <desc>...</desc>
+                        <desc>
+                            <list>
+                                <item>
+                                    <ptr target="https://www.uvic.ca/campus/multifaith-centre/index.php"/>
+                                </item>
+                            </list>
+                        </desc>
+                        <location type="GeoJSON"><desc><date from-iso="2019"/></desc>
+                            <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.317114,48.460783],[-123.317021,48.46079],[-123.31702,48.460781],[-123.316873,48.460793],[-123.316829,48.460537],[-123.317068,48.460518],[-123.317076,48.460559],[-123.317158,48.460553],[-123.317189,48.460728],[-123.317106,48.460734],[-123.317114,48.460783]]]}</geo>
+                        </location>
                     </place>
                     <place xml:id="bldgElliott" corresp="#bldgTeaching">
                         <placeName>Elliott Building</placeName>
@@ -204,7 +218,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/ell.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/elliott.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -218,9 +232,8 @@
                         <desc>                            
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/fph.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/first-peoples-house.php"/>
                                 </item>
-                                <item><ptr target="html/favourites.html"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="2010"/></desc>
@@ -233,7 +246,7 @@
                         <desc>                            
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/fph.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/first-peoples-house.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -244,10 +257,12 @@
                   <place xml:id="bldgUniversityCentre" corresp="#bldgAdmin #bldgFood">
                     <placeName>University Centre</placeName>
                     <desc>The University's central administrative building, containing 
-                      the Senate Chambers along with food services and the Farquhar Auditorium.</desc>
+                      the Senate Chambers along with food services and the Farquhar Auditorium.
+                      Its name was changed from the University Centre to the Jamie Cassels Centre in 2020.
+                    </desc>
                     <desc>
                       <list>
-                        <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/uvc.php"/></item>
+                          <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/jamie-cassels-centre.php"/></item>
                       </list>
                     </desc>
                     <location type="GeoJSON"><desc><date from-iso="1978" to-iso="2020-10-12"/></desc> <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.311871,48.465594],[-123.311901,48.465575],[-123.311894,48.465545],[-123.311922,48.46553],[-123.311921,48.465501],[-123.31196,48.465459],[-123.311952,48.465391],[-123.311974,48.465372],[-123.311966,48.465325],[-123.312004,48.465298],[-123.311972,48.465072],[-123.312007,48.465043],[-123.312268,48.465019],[-123.312217,48.464711],[-123.311913,48.464739],[-123.311909,48.464706],[-123.311777,48.464642],[-123.311508,48.464659],[-123.311406,48.464743],[-123.311406,48.464772],[-123.311379,48.464799],[-123.311233,48.464812],[-123.311185,48.464788],[-123.311105,48.464794],[-123.311097,48.464742],[-123.310922,48.464755],[-123.310932,48.464808],[-123.310502,48.46484],[-123.310556,48.465151],[-123.311093,48.465111],[-123.311238,48.464996],[-123.311472,48.465129],[-123.311506,48.465334],[-123.311529,48.465347],[-123.311535,48.465384],[-123.31159,48.465415],[-123.311594,48.465462],[-123.311667,48.465511],[-123.311675,48.465543],[-123.311712,48.46556],[-123.311718,48.46559],[-123.311749,48.465603],[-123.311871,48.465594]]]}</geo>
@@ -259,7 +274,7 @@
                         the Senate Chambers along with food services and the Farquhar Auditorium.</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/uvc.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/jamie-cassels-centre.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="2020-10-13"/></desc> <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.311871,48.465594],[-123.311901,48.465575],[-123.311894,48.465545],[-123.311922,48.46553],[-123.311921,48.465501],[-123.31196,48.465459],[-123.311952,48.465391],[-123.311974,48.465372],[-123.311966,48.465325],[-123.312004,48.465298],[-123.311972,48.465072],[-123.312007,48.465043],[-123.312268,48.465019],[-123.312217,48.464711],[-123.311913,48.464739],[-123.311909,48.464706],[-123.311777,48.464642],[-123.311508,48.464659],[-123.311406,48.464743],[-123.311406,48.464772],[-123.311379,48.464799],[-123.311233,48.464812],[-123.311185,48.464788],[-123.311105,48.464794],[-123.311097,48.464742],[-123.310922,48.464755],[-123.310932,48.464808],[-123.310502,48.46484],[-123.310556,48.465151],[-123.311093,48.465111],[-123.311238,48.464996],[-123.311472,48.465129],[-123.311506,48.465334],[-123.311529,48.465347],[-123.311535,48.465384],[-123.31159,48.465415],[-123.311594,48.465462],[-123.311667,48.465511],[-123.311675,48.465543],[-123.311712,48.46556],[-123.311718,48.46559],[-123.311749,48.465603],[-123.311871,48.465594]]]}</geo>
@@ -408,7 +423,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/bec.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/business-and-economics.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -417,14 +432,25 @@
                     </place>
                   <place xml:id="bldgClassroom" corresp="#bldgAdmin #bldgTeaching">
                     <placeName>Classroom Building</placeName>
-                    <desc>...</desc>
+                    <desc>The Classroom Building contains a variety of different teaching spaces.
+                        Its name was changed to the David Strong Building in 2000.</desc>
+                      <desc>
+                          <list>
+                              <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/david-strong.php"/></item>
+                          </list>
+                      </desc>
                     <location type="GeoJSON"><desc><date from-iso="1996" to-iso="2000"/></desc>
                       <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.3137552,48.4649378],[-123.3137001,48.4649404],[-123.3137082,48.4649919],[-123.3135888,48.4650001],[-123.3132143,48.4650258],[-123.3131568,48.4650298],[-123.3131451,48.4649604],[-123.3130912,48.4649638],[-123.3130428,48.4649669],[-123.3129555,48.4649198],[-123.3129344,48.4647812],[-123.3130052,48.4647229],[-123.3131222,48.4647152],[-123.3131746,48.4647117],[-123.3131627,48.4646349],[-123.3135259,48.4646073],[-123.3136487,48.464598],[-123.3136554,48.4646526],[-123.3137057,48.4646502],[-123.3137552,48.4649378]]]}</geo>
                     </location>
                   </place>
                     <place xml:id="bldgStrong" corresp="#bldgAdmin #bldgTeaching">
                         <placeName>David Strong Building</placeName>
-                        <desc>...</desc>
+                        <desc>The David Strong Building contains a variety of different teaching spaces.</desc>
+                        <desc>
+                            <list>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/david-strong.php"/></item>
+                            </list>
+                        </desc>
                         <location type="GeoJSON"><desc><date from-iso="2000"/></desc>
                             <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.3137552,48.4649378],[-123.3137001,48.4649404],[-123.3137082,48.4649919],[-123.3135888,48.4650001],[-123.3132143,48.4650258],[-123.3131568,48.4650298],[-123.3131451,48.4649604],[-123.3130912,48.4649638],[-123.3130428,48.4649669],[-123.3129555,48.4649198],[-123.3129344,48.4647812],[-123.3130052,48.4647229],[-123.3131222,48.4647152],[-123.3131746,48.4647117],[-123.3131627,48.4646349],[-123.3135259,48.4646073],[-123.3136487,48.464598],[-123.3136554,48.4646526],[-123.3137057,48.4646502],[-123.3137552,48.4649378]]]}</geo>
                         </location>
@@ -437,7 +463,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/sed.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/sedgewick.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -453,7 +479,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/sed.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/sedgewick.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -469,7 +495,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/sed.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/sedgewick.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -479,8 +505,13 @@
                     </place>
                   <place xml:id="bldgCIT" corresp="#bldgAdmin #bldgTeaching">
                     <placeName>Centre for Innovative Teaching</placeName>
+                      <desc>The Centre for Innovative Teaching provides support for innovation in 
+                          learning and teaching. Its name was changed to the Hickman Building in 2004.
+                      </desc>
                     <desc>
-                      ...
+                      <list>
+                          <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/hickman.php"/></item>
+                      </list>
                     </desc>
                     <location type="GeoJSON"><desc><date from-iso="1999" to-iso="2004-09"/></desc>
                       <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.3145111,48.4637125],[-123.3144096,48.4637188],[-123.3144127,48.463734],[-123.3143775,48.4637412],[-123.314446,48.4638495],[-123.3143393,48.4639392],[-123.3141245,48.4639177],[-123.314113,48.4639399],[-123.3140858,48.4639404],[-123.3141028,48.4640389],[-123.3139356,48.4640502],[-123.3138951,48.4638078],[-123.3139032,48.4637829],[-123.3139245,48.4637853],[-123.3139454,48.4637514],[-123.3140218,48.4637722],[-123.3140301,48.4637592],[-123.3140413,48.4637414],[-123.3140273,48.4636599],[-123.3144963,48.4636276],[-123.3145111,48.4637125]]]}</geo>
@@ -489,7 +520,13 @@
                     <place xml:id="bldgHickman" corresp="#bldgAdmin #bldgTeaching">
                         <placeName>Hickman Building</placeName>
                         <desc>
-                            ...
+                            The Hickman Building  provides support for innovation in 
+                            learning and teaching.
+                        </desc>
+                        <desc>
+                            <list>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/hickman.php"/></item>
+                            </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="2004-10"/></desc>
                             <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.3145111,48.4637125],[-123.3144096,48.4637188],[-123.3144127,48.463734],[-123.3143775,48.4637412],[-123.314446,48.4638495],[-123.3143393,48.4639392],[-123.3141245,48.4639177],[-123.314113,48.4639399],[-123.3140858,48.4639404],[-123.3141028,48.4640389],[-123.3139356,48.4640502],[-123.3138951,48.4638078],[-123.3139032,48.4637829],[-123.3139245,48.4637853],[-123.3139454,48.4637514],[-123.3140218,48.4637722],[-123.3140301,48.4637592],[-123.3140413,48.4637414],[-123.3140273,48.4636599],[-123.3144963,48.4636276],[-123.3145111,48.4637125]]]}</geo>
@@ -524,8 +561,7 @@
                         </desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/lic.php"/></item>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/lib.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/mearns-centre-for-learning.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="1964"/></desc>
@@ -535,6 +571,11 @@
                     <place xml:id="bldgMacLaurin" corresp="#bldgAdmin #bldgTeaching">
                         <placeName>MacLaurin Building A</placeName>
                         <desc>...</desc>
+                        <desc>
+                            <list>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/maclaurin.php"/></item>
+                            </list>
+                        </desc>
                         <location type="GeoJSON"><desc><date from-iso="1967"/></desc>
                             <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.3144973,48.4625595],[-123.314479,48.4625609],[-123.3144963,48.4626615],[-123.3144805,48.4626732],[-123.3144953,48.4627623],[-123.3141148,48.4627906],[-123.3140976,48.4626988],[-123.31412,48.4626972],[-123.3141019,48.4625988],[-123.3139138,48.4626127],[-123.3136982,48.4626286],[-123.3137177,48.4627292],[-123.3136642,48.4627339],[-123.313695,48.4629009],[-123.3137113,48.4629893],[-123.3138164,48.4629819],[-123.3138188,48.4629915],[-123.3141519,48.4629672],[-123.3141632,48.4630429],[-123.314222,48.4630393],[-123.3142319,48.4630932],[-123.3142373,48.463123],[-123.3141911,48.4631258],[-123.3141947,48.4631508],[-123.3138069,48.46318],[-123.3138233,48.4632857],[-123.3137645,48.4632906],[-123.3137708,48.4633346],[-123.3137076,48.4633389],[-123.3136995,48.4632959],[-123.3136427,48.4633006],[-123.31356,48.4633075],[-123.3135271,48.4631298],[-123.3135596,48.4631276],[-123.3135488,48.4630692],[-123.3135687,48.4630678],[-123.3135431,48.4629163],[-123.3135283,48.4628284],[-123.313513,48.4628163],[-123.3135068,48.4627849],[-123.3133028,48.4627993],[-123.3132958,48.4627592],[-123.3132624,48.4627614],[-123.3132574,48.4627336],[-123.3133137,48.4627298],[-123.3133088,48.4627031],[-123.3135147,48.4626885],[-123.313509,48.4626514],[-123.3135016,48.4626032],[-123.3134807,48.4626043],[-123.3134694,48.4625341],[-123.3134945,48.4625325],[-123.3134872,48.4624847],[-123.3135425,48.4624614],[-123.3135326,48.4624179],[-123.3135226,48.4623735],[-123.3134926,48.4623675],[-123.3134836,48.4623085],[-123.3137796,48.4622879],[-123.3137889,48.4623456],[-123.3137839,48.4623473],[-123.3138009,48.4624557],[-123.3138159,48.4624591],[-123.3138259,48.4625061],[-123.3138682,48.4625032],[-123.3140381,48.4624914],[-123.3140636,48.4624896],[-123.3140484,48.4623864],[-123.3140629,48.4623851],[-123.314051,48.4623059],[-123.314426,48.4622779],[-123.3144393,48.4623572],[-123.3144591,48.462356],[-123.3144935,48.4625392],[-123.3144973,48.4625595]]]}</geo>
                         </location>
@@ -544,7 +585,7 @@
                         <desc>...</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/hsd.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/human-and-social-development.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON">
@@ -563,7 +604,7 @@
                         <desc>...</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/cun.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/cunningham.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="1972"/></desc>
@@ -573,6 +614,11 @@
                     <place xml:id="sportCentennial" corresp="#bldgSports">
                         <placeName>Centennial Stadium</placeName>
                         <desc>...</desc>
+                        <desc>
+                            <list>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/centennial-stadium.php"/></item>
+                            </list>
+                        </desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Polygon", "coordinates":[[[-123.3164858,48.4674947],[-123.3161859,48.4675725],[-123.3162093,48.4676121],[-123.3164048,48.4679438],[-123.316352,48.4679575],[-123.3161839,48.4680011],[-123.3160766,48.4680981],[-123.3159643,48.4681832],[-123.315876,48.4682232],[-123.3158903,48.4682479],[-123.3159331,48.468322],[-123.3156945,48.4683826],[-123.3156517,48.4683085],[-123.3156417,48.4682913],[-123.3155215,48.4682938],[-123.315406,48.4682874],[-123.3152601,48.4682702],[-123.3152252,48.4682794],[-123.3150931,48.4683141],[-123.315139,48.468391],[-123.3149704,48.4684353],[-123.3149309,48.4683693],[-123.3148995,48.4683168],[-123.3141878,48.4671263],[-123.3141232,48.4670181],[-123.314319,48.4669667],[-123.3145525,48.4667768],[-123.3146879,48.4667103],[-123.3148533,48.4666605],[-123.3150639,48.4666538],[-123.3154185,48.4666878],[-123.315483,48.466694],[-123.3156774,48.4667101],[-123.3159303,48.467139],[-123.3160712,48.4671025],[-123.3162303,48.4670613],[-123.316321,48.4672152],[-123.3164197,48.4673825],[-123.3164858,48.4674947]]]}</geo>
                         </location>
@@ -582,7 +628,7 @@
                         <desc>Formerly Social Sciences and Mathematics Building: A Wing</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/ssm.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/david-turpin.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="2008"/></desc>
@@ -594,7 +640,7 @@
                         <desc>Formerly Social Sciences and Mathematics Building: A Wing</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/ssm.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/david-turpin.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="2008"/></desc>
@@ -606,7 +652,7 @@
                         <desc>Ocean, Earth and Atmospheric Sciences.</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/sci.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/bob-wright-centre-ocean-earth-and-atmospheric-sciences.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="2011"/></desc>
@@ -618,7 +664,7 @@
                         <desc>...</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/msb.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/medical-sciences.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="2004"/></desc>
@@ -630,7 +676,7 @@
                         <desc>...</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/msb.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/engineering-computer-science.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="1990"/></desc>
@@ -642,7 +688,7 @@
                         <desc>...</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/elw.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/engineering-lab-wing.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="1995"/></desc>
@@ -654,7 +700,7 @@
                         <desc>...</desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/eow.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/engineering-office-wing.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON">
@@ -666,7 +712,7 @@
                         <desc><objectType><graphic url="https://www.uvic.ca/assets2012/images/photos/main/campus-info-maps-maps/main-blg-ucl.jpg"/></objectType></desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/ucl.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/university-club.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON"><desc><date from-iso="1982"/></desc>
@@ -678,7 +724,7 @@
                         <desc><objectType><graphic url="https://www.uvic.ca/assets2012/images/photos/main/campus-info-maps-maps/main-blg-ucl.jpg"/></objectType></desc>
                         <desc>
                             <list>
-                                <item><ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/ucl.php"/></item>
+                                <item><ptr target="https://www.uvic.ca/search/maps-buildings/buildings/university-club.php"/></item>
                             </list>
                         </desc>
                         <location type="GeoJSON">
@@ -691,7 +737,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/sec.php/"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/campus-security.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -700,14 +746,14 @@
                         </location>
                     </place>
                     <place corresp="#bldgAdmin" xml:id="bldgSvc">
-                        <placeName>UVic Services Building</placeName>
-                        <desc>The UVic Services Building houses the UVic Bookstore, Finnerty Express Cafe, and several administrative services.
+                        <placeName>Campus Services Building</placeName>
+                        <desc>The Campus Services Building houses the UVic Bookstore, Finnerty Express Cafe, and several administrative services.
                             <objectType><graphic url="https://c1.staticflickr.com/1/15/68453372_c9536a3fb3.jpg"/></objectType>
                         </desc>
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/csr.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/campus-services.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -721,7 +767,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/oau.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/outdoor-aquatic-unit.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -735,7 +781,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/fia.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/fine-arts.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -749,7 +795,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/via.php"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/visual-arts.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -763,7 +809,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/pnx.php/"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/phoenix-theatre.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -777,7 +823,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/sub.php/"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/student-union.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -791,7 +837,7 @@
                         <desc>
                             <list>
                                 <item>
-                                    <ptr target="https://www.uvic.ca/home/about/campus-info/maps/maps/sub.php/"/>
+                                    <ptr target="https://www.uvic.ca/search/maps-buildings/buildings/student-union.php"/>
                                 </item>
                             </list>
                         </desc>
@@ -807,98 +853,49 @@
                     </place>
                     <place corresp="#transpBus" xml:id="transp100071">
                         <placeName>Northbound University at Ring</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100071"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100071">100071</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.314425,48.460079]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp101036">
                         <placeName>Northbound Ring at University Dr</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=101036"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=101036">101036</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308407,48.461781]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp101011">
                         <placeName>Westbound Ring at McGill</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=101011"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=101011">101011</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.316324,48.463716]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100991">
                         <placeName>Southbound Ring at West Campus</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100991"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100991">100991</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.316045,48.461902]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp101076">
                         <placeName>UVic Exchange Bay A</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=101076"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=101076">101076</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.30952,48.465986]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp102416">
                         <placeName>UVic Exchange Bay B</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=102416"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=102416">102416</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.309363,48.466112]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp102417">
                         <placeName>UVic Exchange Bay C</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=102417"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=102417">102417</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.309178,48.466271]}</geo>
                         </location>
@@ -933,42 +930,21 @@
                     </place>-->
                     <place corresp="#transpBus" xml:id="transp102426">
                         <placeName>UVic Exchange Bay F</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=102426"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=102426">102426</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.309028,48.466071]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100405">
                         <placeName>UVic Exchange Bay G</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100405"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100405">100405</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308867,48.46621]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100507">
                         <placeName>UVic Exchange Bay H</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100507"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100507">100507</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308649,48.46639]}</geo>
                         </location>
@@ -996,98 +972,49 @@
                     </place>
                     <place corresp="#transpBus" xml:id="transp100858">
                         <placeName>UVic Exchange Bay L</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100858"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100858">100858</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308516,48.465932]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100741">
                         <placeName>UVic Exchange Bay M</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100741"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100741">100741</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308346,48.466074]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100705">
                         <placeName>UVic Exchange Bay N</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100705"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100705">100705</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308174,48.466215]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100871">
                         <placeName>UVic Exchange Bay O</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100871"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100871">100871</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308346,48.465787]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100878">
                         <placeName>UVic Exchange Bay P</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100878"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100878">100878</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308174,48.465926]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100889">
                         <placeName>UVic Exchange Bay Q</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100889"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100889">100889</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.308,48.466066]}</geo>
                         </location>
                     </place>
                     <place corresp="#transpBus" xml:id="transp100904">
                         <placeName>UVic Exchange Bay R</placeName>
-                        <desc>...</desc>
-                        <desc>
-                            <list>
-                                <item>
-                                    <ptr target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100904"/>
-                                </item>
-                            </list>
-                        </desc>
+                        <desc>Buses departing from stop <ref target="https://bctransit.com/victoria/schedules-and-maps/next-departures?stopId=100904">100904</ref></desc>
                         <location type="GeoJSON">
                             <geo>"geometry":{"type":"Point", "coordinates":[-123.307832,48.466206]}</geo>
                         </location>

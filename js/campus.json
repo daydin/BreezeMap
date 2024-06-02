@@ -1536,6 +1536,7 @@
                   "bldgMcKinnon",
                   "bldgCARSA",
                   "bldgIntFaith",
+                  "bldgMultiFaith",
                   "bldgElliott",
                   "bldgFirstPeople",
                   "bldgUniversityCentre",
@@ -1573,7 +1574,7 @@
                   "bldgContStudies",
                   "bldgMcKinnon",
                   "bldgCARSA",
-                  "bldgIntFaith",
+                  "bldgMultiFaith",
                   "bldgElliott",
                   "bldgFirstPeople",
                   "bldgUniversityCentre",
@@ -1900,7 +1901,7 @@
         { "name" : "Clearihue Building",
           "desc" : "The oldest building on campus...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/cle.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/clearihue.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2056,7 +2057,7 @@
         { "name" : "Begbie Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/fra.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/fraser.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2213,7 +2214,7 @@
         { "name" : "Fraser Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/fra.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/fraser.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2417,7 +2418,7 @@
         { "name" : "Continuing Studies Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/cst.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/continuing-studies.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2528,7 +2529,7 @@
         { "name" : "McKinnon Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/mck.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/mckinnon.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2627,7 +2628,7 @@
         { "name" : "Centre for Athletics, Recreation and Special Abilities",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/carsa.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/carsa.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2691,11 +2692,72 @@
         { "name" : "Interfaith Chapel",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/cha.php" ],
+          [ "https:\/\/www.uvic.ca\/campus\/multifaith-centre\/index.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
-            { "from" : "1985-01-01T00:00:00" } ],
+            { "from" : "1985-01-01T00:00:00",
+              "to" : "2019-12-31T23:59:59" } ],
+          "taxonomies" : 
+          [ 
+            { "id" : "bldg",
+              "name" : "Buildings",
+              "pos" : 1,
+              "categories" : 
+              [ 
+                { "id" : "bldgPerf",
+                  "name" : "Performance",
+                  "desc" : "Buildings containing performance venues.",
+                  "pos" : 6 } ] } ] } },
+      
+      { "type" : "Feature",
+        "id" : "bldgMultiFaith",
+        "geometry" : 
+        { "type" : "Polygon",
+          "coordinates" : 
+          [ 
+            [ 
+              [ -123.317114,
+                48.460783 ],
+              
+              [ -123.317021,
+                48.46079 ],
+              
+              [ -123.31702,
+                48.460781 ],
+              
+              [ -123.316873,
+                48.460793 ],
+              
+              [ -123.316829,
+                48.460537 ],
+              
+              [ -123.317068,
+                48.460518 ],
+              
+              [ -123.317076,
+                48.460559 ],
+              
+              [ -123.317158,
+                48.460553 ],
+              
+              [ -123.317189,
+                48.460728 ],
+              
+              [ -123.317106,
+                48.460734 ],
+              
+              [ -123.317114,
+                48.460783 ] ] ] },
+        "properties" : 
+        { "name" : "Multifaith Centre",
+          "desc" : "...",
+          "links" : 
+          [ "https:\/\/www.uvic.ca\/campus\/multifaith-centre\/index.php" ],
+          "showOnMenu" : true,
+          "dateTimes" : 
+          [ 
+            { "from" : "2019-01-01T00:00:00" } ],
           "taxonomies" : 
           [ 
             { "id" : "bldg",
@@ -2757,7 +2819,7 @@
         { "name" : "Elliott Building",
           "desc" : "The Elliott Building...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/ell.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/elliott.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2850,8 +2912,7 @@
         { "name" : "First Peoples House",
           "desc" : "<a target=\"_blank\" href=\"https:\/\/burntembers.files.wordpress.com\/2013\/03\/img_1773.jpg\"><img alt=\"https:\/\/burntembers.files.wordpress.com\/2013\/03\/img_1773.jpg\" src=\"https:\/\/burntembers.files.wordpress.com\/2013\/03\/img_1773.jpg\"\/><\/a>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/fph.php",
-            "html\/favourites.html" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/first-peoples-house.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -2884,7 +2945,7 @@
         { "name" : "Waypoint H: First Peoples House",
           "desc" : "<a target=\"_blank\" href=\"https:\/\/burntembers.files.wordpress.com\/2013\/03\/img_1773.jpg\"><img alt=\"https:\/\/burntembers.files.wordpress.com\/2013\/03\/img_1773.jpg\" src=\"https:\/\/burntembers.files.wordpress.com\/2013\/03\/img_1773.jpg\"\/><\/a>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/fph.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/first-peoples-house.php" ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -3034,9 +3095,9 @@
                 48.465594 ] ] ] },
         "properties" : 
         { "name" : "University Centre",
-          "desc" : "The University's central administrative building, containing the Senate Chambers along with food services and the Farquhar Auditorium.",
+          "desc" : "The University's central administrative building, containing the Senate Chambers along with food services and the Farquhar Auditorium. Its name was changed from the University Centre to the Jamie Cassels Centre in 2020.",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/uvc.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/jamie-cassels-centre.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -3202,7 +3263,7 @@
         { "name" : "Jamie Cassels Centre",
           "desc" : "The University's central administrative building, containing the Senate Chambers along with food services and the Farquhar Auditorium.",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/uvc.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/jamie-cassels-centre.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -4538,7 +4599,7 @@
         { "name" : "Business and Economics Building",
           "desc" : "The Business and Social Sciences faculties live in the BEC building.",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/bec.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/business-and-economics.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -4628,9 +4689,9 @@
                 48.4649378 ] ] ] },
         "properties" : 
         { "name" : "Classroom Building",
-          "desc" : "...",
+          "desc" : "The Classroom Building contains a variety of different teaching spaces. Its name was changed to the David Strong Building in 2000.",
           "links" : 
-          [  ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/david-strong.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -4721,9 +4782,9 @@
                 48.4649378 ] ] ] },
         "properties" : 
         { "name" : "David Strong Building",
-          "desc" : "...",
+          "desc" : "The David Strong Building contains a variety of different teaching spaces.",
           "links" : 
-          [  ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/david-strong.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -4806,7 +4867,7 @@
         { "name" : "Sedgewick Building: A Wing",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sed.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/sedgewick.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -4904,7 +4965,7 @@
         { "name" : "Sedgewick Building: Vanderkerkhove B Wing",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sed.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/sedgewick.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -5014,7 +5075,7 @@
         { "name" : "Sedgewick Building: C Wing",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sed.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/sedgewick.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -5107,9 +5168,9 @@
                 48.4637125 ] ] ] },
         "properties" : 
         { "name" : "Centre for Innovative Teaching",
-          "desc" : "...",
+          "desc" : "The Centre for Innovative Teaching provides support for innovation in learning and teaching. Its name was changed to the Hickman Building in 2004.",
           "links" : 
-          [  ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/hickman.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -5203,9 +5264,9 @@
                 48.4637125 ] ] ] },
         "properties" : 
         { "name" : "Hickman Building",
-          "desc" : "...",
+          "desc" : "The Hickman Building provides support for innovation in learning and teaching.",
           "links" : 
-          [  ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/hickman.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -5527,8 +5588,7 @@
         { "name" : "Mearns Centre for Learning",
           "desc" : "<div class=\"p\">This is the current home of the Humanities Computing and Media Centre, which used to be located in the <a href=\"hol:bldgClearihue\">Clearihue Building<\/a>.<\/div><div class=\"p\">The library also lives in the same building.<\/div><div class=\"p\"> This is the home of: <ul><li><a href=\"box:https:\/\/www.uvic.ca\/humanities\/hcmc\/aboutus\/staff\/profiles\/holmesmartin.php\">Martin Holmes<\/a><\/li><li><a href=\"box:https:\/\/www.uvic.ca\/humanities\/hcmc\/aboutus\/staff\/profiles\/newtongreg.php\">Greg Newton<\/a><\/li><\/ul><\/div>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/lic.php",
-            "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/lib.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/mearns-centre-for-learning.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -5785,7 +5845,7 @@
         { "name" : "MacLaurin Building A",
           "desc" : "...",
           "links" : 
-          [  ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/maclaurin.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -5910,7 +5970,7 @@
         { "name" : "Human and Social Development Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/hsd.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/human-and-social-development.php" ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -6143,7 +6203,7 @@
         { "name" : "Cunningham Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/cun.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/cunningham.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -6292,7 +6352,7 @@
         { "name" : "Centennial Stadium",
           "desc" : "...",
           "links" : 
-          [  ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/centennial-stadium.php" ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -6368,7 +6428,7 @@
         { "name" : "David Turpin Building: A Wing",
           "desc" : "Formerly Social Sciences and Mathematics Building: A Wing",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/ssm.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/david-turpin.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -6443,7 +6503,7 @@
         { "name" : "David Turpin Building: B Wing",
           "desc" : "Formerly Social Sciences and Mathematics Building: A Wing",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/ssm.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/david-turpin.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -6566,7 +6626,7 @@
         { "name" : "Bob Wright Centre",
           "desc" : "Ocean, Earth and Atmospheric Sciences.",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sci.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/bob-wright-centre-ocean-earth-and-atmospheric-sciences.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -6757,7 +6817,7 @@
         { "name" : "Medical Sciences Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/msb.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/medical-sciences.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -6862,7 +6922,7 @@
         { "name" : "Engineering\/Computer Science Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/msb.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/engineering-computer-science.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7015,7 +7075,7 @@
         { "name" : "Engineering Lab Wing",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/elw.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/engineering-lab-wing.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7093,7 +7153,7 @@
         { "name" : "Engineering Office Wing",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/eow.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/engineering-office-wing.php" ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -7161,7 +7221,7 @@
         { "name" : "University Club",
           "desc" : "<a target=\"_blank\" href=\"https:\/\/www.uvic.ca\/assets2012\/images\/photos\/main\/campus-info-maps-maps\/main-blg-ucl.jpg\"><img alt=\"https:\/\/www.uvic.ca\/assets2012\/images\/photos\/main\/campus-info-maps-maps\/main-blg-ucl.jpg\" src=\"https:\/\/www.uvic.ca\/assets2012\/images\/photos\/main\/campus-info-maps-maps\/main-blg-ucl.jpg\"\/><\/a>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/ucl.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/university-club.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7193,7 +7253,7 @@
         { "name" : "Waypoint K: University Club",
           "desc" : "<a target=\"_blank\" href=\"https:\/\/www.uvic.ca\/assets2012\/images\/photos\/main\/campus-info-maps-maps\/main-blg-ucl.jpg\"><img alt=\"https:\/\/www.uvic.ca\/assets2012\/images\/photos\/main\/campus-info-maps-maps\/main-blg-ucl.jpg\" src=\"https:\/\/www.uvic.ca\/assets2012\/images\/photos\/main\/campus-info-maps-maps\/main-blg-ucl.jpg\"\/><\/a>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/ucl.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/university-club.php" ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -7273,7 +7333,7 @@
         { "name" : "Campus Security",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sec.php\/" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/campus-security.php" ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -7357,10 +7417,10 @@
               [ -123.309639,
                 48.466453 ] ] ] },
         "properties" : 
-        { "name" : "UVic Services Building",
-          "desc" : "The UVic Services Building houses the UVic Bookstore, Finnerty Express Cafe, and several administrative services. <a target=\"_blank\" href=\"https:\/\/c1.staticflickr.com\/1\/15\/68453372_c9536a3fb3.jpg\"><img alt=\"https:\/\/c1.staticflickr.com\/1\/15\/68453372_c9536a3fb3.jpg\" src=\"https:\/\/c1.staticflickr.com\/1\/15\/68453372_c9536a3fb3.jpg\"\/><\/a>",
+        { "name" : "Campus Services Building",
+          "desc" : "The Campus Services Building houses the UVic Bookstore, Finnerty Express Cafe, and several administrative services. <a target=\"_blank\" href=\"https:\/\/c1.staticflickr.com\/1\/15\/68453372_c9536a3fb3.jpg\"><img alt=\"https:\/\/c1.staticflickr.com\/1\/15\/68453372_c9536a3fb3.jpg\" src=\"https:\/\/c1.staticflickr.com\/1\/15\/68453372_c9536a3fb3.jpg\"\/><\/a>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/csr.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/campus-services.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7402,7 +7462,7 @@
         { "name" : "Outdoor Aquatic Unit",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/oau.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/outdoor-aquatic-unit.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7492,7 +7552,7 @@
         { "name" : "Fine Arts Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/fia.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/fine-arts.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7651,7 +7711,7 @@
         { "name" : "Visial Arts Building",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/via.php" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/visual-arts.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7837,7 +7897,7 @@
         { "name" : "Phoenix Theatre",
           "desc" : "...",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/pnx.php\/" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/phoenix-theatre.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -7990,7 +8050,7 @@
         { "name" : "Student Union Building",
           "desc" : "<a target=\"_blank\" href=\".\/images\/subBld.jpg\"><img alt=\".\/images\/subBld.jpg\" src=\".\/images\/subBld.jpg\"\/><\/a>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sub.php\/" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/student-union.php" ],
           "showOnMenu" : true,
           "dateTimes" : 
           [ 
@@ -8018,7 +8078,7 @@
         { "name" : "Waypoint D: Student Union Building",
           "desc" : "<a target=\"_blank\" href=\".\/images\/subBld.jpg\"><img alt=\".\/images\/subBld.jpg\" src=\".\/images\/subBld.jpg\"\/><\/a>",
           "links" : 
-          [ "https:\/\/www.uvic.ca\/home\/about\/campus-info\/maps\/maps\/sub.php\/" ],
+          [ "https:\/\/www.uvic.ca\/search\/maps-buildings\/buildings\/student-union.php" ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8144,9 +8204,9 @@
             48.460079 ] },
         "properties" : 
         { "name" : "Northbound University at Ring",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100071\">100071<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100071" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8173,9 +8233,9 @@
             48.461781 ] },
         "properties" : 
         { "name" : "Northbound Ring at University Dr",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=101036\">101036<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=101036" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8202,9 +8262,9 @@
             48.463716 ] },
         "properties" : 
         { "name" : "Westbound Ring at McGill",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=101011\">101011<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=101011" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8231,9 +8291,9 @@
             48.461902 ] },
         "properties" : 
         { "name" : "Southbound Ring at West Campus",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100991\">100991<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100991" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8260,9 +8320,9 @@
             48.465986 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay A",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=101076\">101076<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=101076" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8289,9 +8349,9 @@
             48.466112 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay B",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=102416\">102416<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=102416" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8318,9 +8378,9 @@
             48.466271 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay C",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=102417\">102417<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=102417" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8347,9 +8407,9 @@
             48.466071 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay F",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=102426\">102426<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=102426" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8376,9 +8436,9 @@
             48.46621 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay G",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100405\">100405<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100405" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8405,9 +8465,9 @@
             48.46639 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay H",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100507\">100507<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100507" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8521,9 +8581,9 @@
             48.465932 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay L",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100858\">100858<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100858" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8550,9 +8610,9 @@
             48.466074 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay M",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100741\">100741<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100741" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8579,9 +8639,9 @@
             48.466215 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay N",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100705\">100705<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100705" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8608,9 +8668,9 @@
             48.465787 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay O",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100871\">100871<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100871" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8637,9 +8697,9 @@
             48.465926 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay P",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100878\">100878<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100878" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8666,9 +8726,9 @@
             48.466066 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay Q",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100889\">100889<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100889" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
@@ -8695,9 +8755,9 @@
             48.466206 ] },
         "properties" : 
         { "name" : "UVic Exchange Bay R",
-          "desc" : "...",
+          "desc" : "Buses departing from stop <a href=\"https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100904\">100904<\/a>",
           "links" : 
-          [ "https:\/\/bctransit.com\/victoria\/schedules-and-maps\/next-departures?stopId=100904" ],
+          [  ],
           "showOnMenu" : true,
           "taxonomies" : 
           [ 
