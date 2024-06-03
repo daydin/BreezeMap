@@ -115,7 +115,7 @@ hol.VERSION = '1.2b';
  *  @type {string}
  *  @default
 */
-hol.OLVERSION = '9.2.3';
+hol.OLVERSION = ol.util.VERSION;
 
 /**
  * Constants in hol namespace used
@@ -3012,7 +3012,7 @@ hol.VectorLayer.prototype.timelineChange = function(sender){
 
     if (this.timelinePanZoom){
       let feats = [...featNumsToKeepShowing, ...featNumsToShowNew];
-      console.log(feats);
+      //console.log(feats);
       if ((feats.length > 1)||((feats.length === 1) && (this.features[feats[0]].getGeometry().GeometryType !== 'Point'))){
         this.centerOnFeatures(feats);
       }
@@ -3541,11 +3541,13 @@ hol.VectorLayer.prototype.centerOnFeatures = function(featNums){
   var i, maxi, geomCol, extent, el, leftMargin = 20, rightMargin, bottomMargin = 20, opts, geoms = [];
   try{
     for (i=0, maxi=featNums.length; i<maxi; i++){
-      geoms.push(this.features[featNums[i]].getGeometry());
+      let g = this.features[featNums[i]].getGeometry();
+      if (g !== undefined){
+          geoms.push(g);
+      }
     }
     if (geoms.length > 0){
-      geomCol = new ol.geom.GeometryCollection();
-      geomCol.setGeometries(geoms);
+      geomCol = new ol.geom.GeometryCollection(geoms);
       extent = geomCol.getExtent();
 //Now we need to allow for the fact that a big block of the map
 //is invisible under the navigation, info and doc panels.
