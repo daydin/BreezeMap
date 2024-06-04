@@ -44,7 +44,7 @@
   <property name="bmClosureCompilationLevel" value="SIMPLE"/>
   
   <!-- What output conformity we want for our JS. We're fairly forward-looking by default. -->
-  <property name="bmClosureOutputSpec" value="ECMASCRIPT_2019"/>
+  <property name="bmClosureOutputSpec" value="ECMASCRIPT_NEXT"/>
 
   <condition property="buildingTestsOnly">
     <equals arg1="" arg2="${inputXml}"/>
