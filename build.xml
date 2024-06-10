@@ -161,7 +161,7 @@
       sourceMapOutputFile="${proj.dir}/js/hcmc_ol.js.map"
       >
       <sources dir="${proj.dir}/js">
-        <file name="hcmc_ol.js"/>
+        <file name="out.js"/>
       </sources>
     </jscomp>
   </target>
@@ -217,7 +217,7 @@
     <antcall target="buildCss"/>
     <antcall target="teiToGeoJSON"/>
     <!--<antcall target="getOL"/>-->
-    <antcall target="minify"/>
+<!--    <antcall target="minify"/>-->
     <antcall target="createTestSite"/>
     <antcall target="createUserHtml"/>
   </target>
