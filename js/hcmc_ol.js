@@ -91,7 +91,7 @@ hol.VectorLayer.prototype.setupUpload = function(){
         var reader = new FileReader();
         reader.onload = (function(hol) { return function(e) {
           if (input.files[0].type.match('xml')){
-  //NOTE: THIS DOESN'T WORK AND WILL PROBABLY NEVER WORK.
+            // NOTE: THIS DOESN'T WORK AND WILL PROBABLY NEVER WORK.
             hol.teiToGeoJSON(e.target.result, 'js/tei_to_geojson_xslt1.xsl');
           }
           else{
