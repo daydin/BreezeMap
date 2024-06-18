@@ -28,116 +28,173 @@ class VectorLayer {
         this.options = options;
 
         try{
-//First process the options object.
+            // First process the options object.
             if (options === undefined){
                 options = {};
             }
-//Setting for testing new features.
+            // Setting for testing new features.
             this.testing = options.testing || false;
             this.allowUpload = options.allowUpload || false;
             this.allowDrawing = options.allowDrawing || false;
             this.allowTaxonomyEditing = options.allowTaxonomyEditing || false;
             this.allFeaturesTaxonomy = (options.allFeaturesTaxonomy /*&& !this.allowDrawing*/) || false;
-            //If multiple taxonomies are being used, and this is true, then
-            //generate an additional taxonomy which combines everything. If
-            //you combine this with drawing, though, things get messy.
-            this.initialTaxonomyId = options.initialTaxonomyId || ''; //Either the id of a taxonomy, or the value 'holAllTaxonomies'
-            //for the allFeaturesTaxonomy.
+            // If multiple taxonomies are being used, and this is true, then
+            // generate an additional taxonomy which combines everything. If
+            // you combine this with drawing, though, things get messy.
+            this.initialTaxonomyId = options.initialTaxonomyId || '';
+
 
             this.msPlayInterval = (options.msPlayInterval === undefined)? 1500 : options.msPlayInterval;
             this.pageLang = document.querySelector('html').getAttribute('lang') || 'en';
             this.collator = new Intl.Collator(this.pageLang);
 
-            this.linkPrefix = options.linkPrefix || ''; //Prefix to be added to all linked document paths before retrieval.
-                                                        //To be set by the host application if required.
+            // Prefix to be added to all linked document paths before retrieval.
+            // To be set by the host application if required.
+            this.linkPrefix = options.linkPrefix || '';
 
+            // A function to be called when the object has been fully constructed.
             this.onReadyFunction = options.onReadyFunction || null;
-            //A function to be called when the object has been fully constructed.
 
+            // Whether geolocation tracking should be turned on automatically
             this.trackUserLocation = options.trackUserLocation || false;
-            //Whether or not geolocation tracking should be turned on automatically
+
+            // Whether a button is provided for users to turn on tracking.
             this.allowUserTracking = options.allowUserTracking || false;
-            //Whether a button is provided for users to turn on tracking.
 
+
+            // Whether to pan/zoom to frame current features
+            // when a timeline step happens.
             this.timelinePanZoom = (options.timelinePanZoom === undefined)? true : options.timelinePanZoom;
-            //Whether or not to pan/zoom to frame current features
-            //when a timeline step happens.
 
-            this.geolocationId = -1;                   //Will hold the id of the position watcher if tracking is turned on.
 
-            this.userPositionMarker = null;            //Pointer to a feature used as a position marker for user tracking.
+            // Will hold the id of the position watcher if tracking is turned on.
+            this.geolocationId = -1;
 
+            // Pointer to a feature used as a position marker for user tracking.
+            this.userPositionMarker = null;
+
+            // Stash a convenient ref to the body of the host document.
             this.docBody = document.getElementsByTagName('body')[0];
-            //Stash a convenient ref to the body of the host document.
+
 
             this.captionLang = document.getElementsByTagName('html')[0].getAttribute('lang') || 'en'; //Document language.
+            // Pointer to the caption object we're going to use.
             this.captions = constants.captions[this.captionLang];
-            //Pointer to the caption object we're going to use.
 
 
-            this.map = olMap;                          //The OpenLayers map object.
-            this.mapTitle = '';                        //If a map title is specified in the GeoJSON, it will be stored here.
-            this.view = this.map.getView();            //Pointer to the ol.View.
-            this.featuresUrl = featuresUrl || '';      //URL of the JSON file containing all the features.
-            this.startupDoc = options.startupDoc || '';//If there is an initial document to show in the left panel.
-            this.geojsonFileName = '';                 //Will contain a filename for data download if needed.
-            this.draw = null;                          //Will point to drawing interaction if invoked.
-            this.modify = null;                        //Will point to modify interaction if invoked.
-            this.currDrawGeometryType = '';            //Will hold e.g. 'Point', 'GeometryCollection'.
-            this.currDrawGeometry = null;              //Will hold an actual ol geometry object.
-            this.drawingFeatures = null;               //Will point to an ol.Collection() if invoked.
-            this.featureOverlay = null;                //Will carry drawn features if invoked.
-            this.coordsBox = null;                     //Will point to a box containing drawing coords.
-            this.acceptCoords = null;                  //Will point to a button to accept drawn coords.
+            // The OpenLayers map object.
+            this.map = olMap;
+            // If a map title is specified in the GeoJSON, it will be stored here.
+            this.mapTitle = '';
+            // Pointer to the ol.View.
+            this.view = this.map.getView();
+            // URL of the JSON file containing all the features.
+            this.featuresUrl = featuresUrl || '';
+            // If there is an initial document to show in the left panel.
+            this.startupDoc = options.startupDoc || '';
+            // Will contain a filename for data download if needed.
+            this.geojsonFileName = '';
+            // Will point to drawing interaction if invoked.
+            this.draw = null;
+            // Will point to modify interaction if invoked.
+            this.modify = null;
+            // Will hold e.g. 'Point', 'GeometryCollection'.
+            this.currDrawGeometryType = '';
+            // Will hold an actual ol geometry object.
+            this.currDrawGeometry = null;
+            // Will point to an ol.Collection() if invoked.
+            this.drawingFeatures = null;
+            // Will carry drawn features if invoked.
+            this.featureOverlay = null;
+            this.coordsBox = null;
+            // Will point to a box containing drawing coords.
+            this.acceptCoords = null;
+            // Will point to a button to accept drawn coords.
             this.splash = this.getSplashScreen();
 
-            this.source = null;                        //Will point to the ol.source.Vector.
-            this.tmpSource = null;                     //Will be used to load more features without discarding existing set.
-            this.taxonomiesLoaded = false;             //Need to know when the taxonomies have been constructed.
-            this.features = [];                        //This is set to point to the features of the source after loading.
-            this.baseFeature = null;                   //Will hold a pointer to the base map feature which is never shown but
-                                                       //carries the complete set of taxonomies and other map-wide properties.
-            this.taxonomies = [];                      //Holds the reconstructed taxonomy/category sets after loading.
-            this.currTaxonomy = -1;                    //Holds the index of the taxonomy currently being displayed in the
-                                                       //navigation panel.
-            this.featsLoaded = false;                  //Good to know when loading of features is done.
-            this.featureDisplayStatus = constants.NAV_IDLE;  //Makes sure we don't try to do two things at the same time.
-            this.toolbar = null;                       //Pointer to the toolbar after we have created it.
-            this.iButton = null;                       //Pointer to Information button after we have created it.
-            this.userTrackButton = null;               //Pointer to user location tracking button if it is created.
-            this.mobileMenuToggleButton = null;        //Pointer to button which toggles the menu display in mobile view.
-            this.taxonomySelector = null;              //Pointer to the taxonomy selector on the toolbar.
-            this.navPanel = null;                      //Pointer to the navPanel after we have created it.
-            this.navInput = null;                      //Pointer to the nav search input box after we've created it.
-            this.featureCheckboxes = null;             //Will be a nodeList of all checkboxes for features.
-            this.categoryCheckboxes = null;            //Will be a nodeList of all checkboxes for categories.
-            this.allFeaturesCheckbox = null;           //Will be a pointer to the show/hide all features checkbox.
-            this.selectedFeature = -1;                 //Will contain the index of the currently-selected feature, or -1.
-            this.selectedFeatureNav = null;            //Will contain a pointer to the navigation panel list item for
-                                                       //the selected feature.
-            this.docTitle = null;                      //Will contain a pointer to the title span on the left of the toolbar.
-            this.menu = null;                          //Will contain a pointer to menu-like controls for editing etc.
-            this.fileMenu = null;                      //Will contain a pointer to file upload/download control menu.
-            this.setupMenu = null;                     //Will contain a pointer to map setup menu.
-            this.drawMenu = null;                      //Will contain a pointer to the drawing menu.
+            // Will point to the ol.source.Vector.
+            this.source = null;
+            this.tmpSource = null;
+            // Will be used to load more features without discarding existing set.
+            this.taxonomiesLoaded = false;
+            // Need to know when the taxonomies have been constructed.
+            this.features = [];
+            // This is set to point to the features of the source after loading.
+            this.baseFeature = null;
+            // Will hold a pointer to the base map feature which is never shown but
+            // carries the complete set of taxonomies and other map-wide properties.
+            this.taxonomies = [];
+            // Holds the reconstructed taxonomy/category sets after loading.
+            // Holds the index of the taxonomy currently being displayed in the
+            // navigation panel.
+            this.currTaxonomy = -1;
+            // Good to know when loading of features is done.
+            this.featsLoaded = false;
 
-            this.timelineData = null;                  //Will be populated from the richTimelinePoints property of the base feature.
-            this.timeline = null;                      //Will contain a pointer to the timeline control, if one is constructed.
-            this.timelinePoints = [];                  //Will be populated with objects for start and end points, labels, and lists of features.
-            this.lastTimelineFeatNums = new Set();     //Will hold the numbers of features shown the last time a timeline change happened.
-            this.playInterval = null;                  //Will store the interval pointer when playing the timeline.
-            this.playButton = null;                    //Will contain a pointer to the timeline play control, if one is constructed.
-            this.stepForwardButton = null;             //Will contain a pointer to the timeline step forward control, if one is constructed.
-            this.stepBackButton = null;                //Will contain a pointer to the timeline step back control, if one is constructed.
-            this.playImg = null;                       //Will contain a pointer to an SVG image for the button if required.
+            // Makes sure we don't try to do two things at the same time.
+            this.featureDisplayStatus = constants.NAV_IDLE;
 
-//Start by creating the toolbar for the page.
+            // Pointer to the toolbar after we have created it.
+            this.toolbar = null;
+            // Pointer to Information button after we have created it.
+            this.iButton = null;
+            // Pointer to user location tracking button if it is created.
+            this.userTrackButton = null;
+            // Pointer to button which toggles the menu display in mobile view.
+            this.mobileMenuToggleButton = null;
+            // Pointer to the taxonomy selector on the toolbar.
+            this.taxonomySelector = null;
+            // Pointer to the navPanel after we have created it.
+            this.navPanel = null;
+            // Pointer to the nav search input box after we've created it.
+            this.navInput = null;
+            // Will be a nodeList of all checkboxes for features.
+            this.featureCheckboxes = null;
+            // Will be a nodeList of all checkboxes for categories.
+            this.categoryCheckboxes = null;
+            // Will be a pointer to the show/hide all features checkbox.
+            this.allFeaturesCheckbox = null;
+            // Will contain the index of the currently-selected feature, or -1.
+            this.selectedFeature = -1;
+            // Will contain a pointer to the navigation panel list item for
+            // the selected feature.
+            this.selectedFeatureNav = null;
+            // Will contain a pointer to the title span on the left of the toolbar.
+            this.docTitle = null;
+            // Will contain a pointer to menu-like controls for editing etc.
+            this.menu = null;
+            // Will contain a pointer to file upload/download control menu.
+            this.fileMenu = null;
+            // Will contain a pointer to map setup menu.
+            this.setupMenu = null;
+            // Will contain a pointer to the drawing menu.
+            this.drawMenu = null;
+            // Will be populated from the richTimelinePoints property of the base feature.
+            this.timelineData = null;
+            // Will contain a pointer to the timeline control, if one is constructed.
+            this.timeline = null;
+            // Will be populated with objects for start and end points, labels, and lists of features.
+            this.timelinePoints = [];
+            // Will hold the numbers of features shown the last time a timeline change happened.
+            this.lastTimelineFeatNums = new Set();
+            // Will store the interval pointer when playing the timeline.
+            this.playInterval = null;
+            // Will contain a pointer to the timeline play control, if one is constructed.
+            this.playButton = null;
+            // Will contain a pointer to the timeline step forward control, if one is constructed.
+            this.stepForwardButton = null;
+            // Will contain a pointer to the timeline step back control, if one is constructed.
+            this.stepBackButton = null;
+            // Will contain a pointer to an SVG image for the button if required.
+            this.playImg = null;
+
+            // Start by creating the toolbar for the page.
             this.buildToolbar();
 
-//Next we create a div for displaying external retrieved documents.
+            // Next we create a div for displaying external retrieved documents.
             this.docDisplayDiv = document.createElement('div');
             this.docDisplayDiv.setAttribute('id', 'holDocDisplay');
-//We need to avoid this thing flashing on the screen just when it's added to the DOM.
+            //  We need to avoid this thing flashing on the screen just when it's added to the DOM.
             this.docDisplayDiv.setAttribute('style', 'display: none;');
             this.docDisplayDiv.classList.add('hidden');
             let closeBtn = document.createElement('span');
@@ -151,10 +208,10 @@ class VectorLayer {
             this.docBody.appendChild(this.docDisplayDiv);
             this.docDisplayDiv.setAttribute('style', '');
 
-//Add an event listener to fix hol: links whenever a document is loaded.
+            //  Add an event listener to fix hol: links whenever a document is loaded.
             this.docDisplayFrame.addEventListener('load', function(){try{this.rewriteHolLinks(this.docDisplayFrame.contentDocument.getElementsByTagName('body')[0]);}catch(e){}}.bind(this), false);
 
-//Now we create a box-dragging feature.
+            //  Now we create a box-dragging feature.
             this.dragBox = new ol.interaction.DragBox({
                 condition: ol.events.condition.platformModifierKeyOnly,
                 style: util.Util.getDragBoxStyle()
@@ -162,20 +219,20 @@ class VectorLayer {
             });
 
             this.dragBox.on('boxend', function(e){
-                var boxExtent = this.dragBox.getGeometry().getExtent();
+                let boxExtent = this.dragBox.getGeometry().getExtent();
                 this.zoomToBox(boxExtent);
             }.bind(this));
 
             this.map.addInteraction(this.dragBox);
 
-//Add the click function to the map, even though there's nothing to receive it yet.
+            // Add the click function to the map, even though there's nothing to receive it yet.
             this.map.on('click', function(evt){this.selectFeatureFromPixel(evt.pixel);}.bind(this));
 
-//Add the vector layer, with no source for the moment.
+            // Add the vector layer, with no source for the moment.
             this.layer = new ol.layer.Vector({style: util.Util.getHiddenStyle});
             this.map.addLayer(this.layer);
 
-//Now various extra optional features.
+            //  Now various extra optional features.
 
             if (this.allowUpload === true){
                 this.setupUpload();
@@ -188,7 +245,7 @@ class VectorLayer {
                 this.setupTaxonomyEditing();
             }
 
-//Now start loading vector data.
+            // Now start loading vector data.
             if (this.featuresUrl !== ''){
                 this.loadGeoJSONFromString(this.featuresUrl);
                 this.geojsonFileName = this.featuresUrl.split(/(\\|\/)/).pop();
@@ -230,7 +287,7 @@ class VectorLayer {
      */
 
     setupUpload = function(){
-        var input, ul, itemUp, itemDown, itemPaste;
+        let input, ul, itemUp, itemDown, itemPaste;
         try{
             if (this.fileMenu === null){
                 if (this.menu === null){this.setupEditingMenu();}
@@ -249,7 +306,7 @@ class VectorLayer {
                 this.menu.appendChild(this.fileMenu);
                 itemUp.addEventListener('click', function(e){input.click(); e.preventDefault();}, false);
                 input.addEventListener('change', function(){
-                    var reader = new FileReader();
+                    let reader = new FileReader();
                     reader.onload = (function(hol) { return function(e) {
                         if (input.files[0].type.match('xml')){
                             //NOTE: THIS DOESN'T WORK AND WILL PROBABLY NEVER WORK.
@@ -294,10 +351,10 @@ class VectorLayer {
      */
 
     setupDrawing = function(){
-        var menu, item, types, simpleTypes, i, maxi, j, maxj, submenu, subitem;
+        let menu, item, types, simpleTypes, i, maxi, j, maxj, submenu, subitem;
         try{
             if (this.menu === null){this.setupEditingMenu();}
-//Set up the setup menu.
+            // Set up the setup menu.
             if (this.setupMenu === null){
                 this.setupMenu = document.createElement('li');
                 this.setupMenu.appendChild(document.createTextNode(this.captions.strSetup));
@@ -311,7 +368,7 @@ class VectorLayer {
             }
 
 
-//Now the main feature-drawing menu.
+            // Now the main feature-drawing menu.
             if (this.drawMenu === null){
                 types = [this.captions.strStopDrawing, this.captions.strClear, 'Point', 'MultiPoint', 'LineString', 'MultiLineString', 'Polygon', 'MultiPolygon', 'GeometryCollection'];
                 simpleTypes = ['Point', 'LineString', 'Polygon'];
@@ -379,7 +436,7 @@ class VectorLayer {
      */
 
     setupTaxonomyEditing = function(){
-        var itemAddTaxonomy;
+        let itemAddTaxonomy;
         try{
             if (this.fileMenu === null){this.setupFileMenu();}
             itemAddTaxonomy = document.createElement('li');
@@ -579,9 +636,9 @@ class VectorLayer {
      */
 
     drawEnd = function(evt){
-        var tmpFeat, i, maxi, j, maxj, tmpGeom, polys, arrGeoms;
+        let tmpFeat, i, maxi, j, maxj, tmpGeom, polys, arrGeoms;
         try{
-            //For some feature types, it's not possible to know for sure when drawing is finished.
+            // For some feature types, it's not possible to know for sure when drawing is finished.
             if (this.currDrawGeometryType.match(/^((Polygon)|(Multi)|(GeometryCollection))/)){
                 switch (this.currDrawGeometryType){
 
@@ -589,12 +646,12 @@ class VectorLayer {
                         tmpFeat = new ol.Feature({geometry: new ol.geom.Polygon([])});
                         tmpGeom = tmpFeat.getGeometry();
                         for (i=0, maxi=this.drawingFeatures.getLength(); i<maxi; i++){
-                            //tmpFeat.getGeometry().appendLinearRing(this.drawingFeatures.item(i).getGeometry().clone().transform('EPSG:3857', 'EPSG:4326'));
+                            // tmpFeat.getGeometry().appendLinearRing(this.drawingFeatures.item(i).getGeometry().clone().transform('EPSG:3857', 'EPSG:4326'));
                             tmpFeat.getGeometry().appendLinearRing(this.transformGeom(this.drawingFeatures.item(i).getGeometry()));
                         }
-                        //The last geometry drawn is not added to the layer because technically we have not finished drawing yet.
+                        // The last geometry drawn is not added to the layer because technically we have not finished drawing yet.
                         if (typeof evt.feature !== 'undefined'){
-                            //tmpGeom.appendLinearRing(evt.feature.getGeometry().clone().transform('EPSG:3857', 'EPSG:4326'));
+                            // tmpGeom.appendLinearRing(evt.feature.getGeometry().clone().transform('EPSG:3857', 'EPSG:4326'));
                             tmpGeom.appendLinearRing(this.transformGeom(evt.feature.getGeometry()));
                         }
                         this.showCoords(tmpFeat.getGeometry());
@@ -649,26 +706,26 @@ class VectorLayer {
                         }
                         break;
                     default:
-                        //This must be a multi-geometry. Very gnarly indeed.
-                        //Go through all features on the drawing layer and build something...
-                        //Now if we actually have multiple geometries...
+                        // This must be a multi-geometry. Very gnarly indeed.
+                        // Go through all features on the drawing layer and build something...
+                        // Now if we actually have multiple geometries...
                         maxi = this.drawingFeatures.getLength();
                         if (maxi > 0){
 
-                            //Create an array to hold the geometries:
+                            // Create an array to hold the geometries:
                             arrGeoms = [];
 
-                            //Now go through all the features on the layer.
+                            // Now go through all the features on the layer.
                             for (i=0; i<maxi; i++){
-                                //arrGeoms.push(this.drawingFeatures.item(i).getGeometry().clone().transform('EPSG:3857', 'EPSG:4326'));
+                                // arrGeoms.push(this.drawingFeatures.item(i).getGeometry().clone().transform('EPSG:3857', 'EPSG:4326'));
                                 arrGeoms.push(this.transformGeom(this.drawingFeatures.item(i).getGeometry()));
                             }
-                            //Add the feature from this drawing event.
+                            // Add the feature from this drawing event.
                             if (typeof evt.feature !== 'undefined'){
                                 //arrGeoms.push(evt.feature.getGeometry().clone().transform('EPSG:3857', 'EPSG:4326'));
                                 arrGeoms.push(this.transformGeom(evt.feature.getGeometry()));
                             }
-                            //Create a new GeometryCollection with the array.
+                            // Create a new GeometryCollection with the array.
                             tmpGeom = new ol.geom.GeometryCollection(arrGeoms);
                             this.showCoords(tmpGeom);
                         }
@@ -678,13 +735,13 @@ class VectorLayer {
             else{
                 if (typeof evt.feature !== 'undefined'){
                     tmpFeat = evt.feature;
-                    //tmpGeom = tmpFeat.getGeometry().clone().transform('EPSG:3857', 'EPSG:4326');
+                    // tmpGeom = tmpFeat.getGeometry().clone().transform('EPSG:3857', 'EPSG:4326');
                     tmpGeom = this.transformGeom(tmpFeat.getGeometry());
                     this.showCoords(tmpGeom);
                 }
                 else{
-                    //This must be the end of a modify operation, in which case we just write the feature from the drawing layer.
-                    //tmpGeom = this.drawingFeatures.item(0).getGeometry().clone().transform('EPSG:3857', 'EPSG:4326');
+                    // This must be the end of a modify operation, in which case we just write the feature from the drawing layer.
+                    // tmpGeom = this.drawingFeatures.item(0).getGeometry().clone().transform('EPSG:3857', 'EPSG:4326');
                     tmpGeom = this.transformGeom(this.drawingFeatures.item(0).getGeometry());
                     this.showCoords(tmpGeom);
                 }
@@ -712,7 +769,7 @@ class VectorLayer {
      */
 
     drawMapBoundsEnd = function(evt){
-        var tmpFeat, geom;
+        let tmpFeat, geom;
         try{
             if (typeof evt.feature !== 'undefined'){
                 tmpFeat = evt.feature;
@@ -755,7 +812,7 @@ class VectorLayer {
 
 
     showCoords = function(geom){
-        var strGeoJSON, teiLocation, strFullGeoJSON, geojson = new ol.format.GeoJSON();
+        let strGeoJSON, teiLocation, strFullGeoJSON, geojson = new ol.format.GeoJSON();
         try{
             if (this.view.getProjection().getCode() === 'EPSG:3857'){
                 strGeoJSON = geojson.writeGeometry(geom, {decimals: 6, rightHanded: true});
@@ -791,14 +848,14 @@ class VectorLayer {
      */
 
     addDrawnFeature = function(){
-        var tax, catNum, catPos, cat, featName, featId, feat;
+        let tax, catNum, catPos, cat, featName, featId, feat;
         tax = this.taxonomies[this.currTaxonomy];
 
         try{
 
-            //First check whether there's a Drawn Features category.
+            // First check whether there's a Drawn Features category.
             if (!this.taxonomyHasCategory(this.currTaxonomy, 'drawnFeatures')){
-                //If not, create one.
+                // If not, create one.
                 catPos = tax.categories.length + 1;
                 tax.categories.push({name: this.captions.strDrawnFeatures, desc: this.captions.strDrawnFeaturesDesc, pos: catPos, id: 'drawnFeatures', features: []});
                 catNum = tax.categories.length-1;
@@ -809,18 +866,18 @@ class VectorLayer {
                 cat = tax.categories[catNum];
             }
 
-            //Now ask for a name from the user.
+            // Now ask for a name from the user.
             featName = window.prompt(this.captions.strGetFeatureName, '');
 
-            //Create an id from the name.
+            // Create an id from the name.
             featId = util.Util.idFromName(featName);
 
-            //Make it unique.
+            // Make it unique.
             while (this.getFeatNumFromId(featId, -1) !== -1){
                 featId += 'x';
             }
 
-            //Create a new feature.
+            // Create a new feature.
             feat = new ol.Feature({});
             feat.setId(featId);
             feat.setProperties({"name": featName, "links": [], "desc": this.captions.strEditThisFeature});
@@ -833,22 +890,22 @@ class VectorLayer {
                 feat.setGeometry(this.currDrawGeometry.clone());
             }
 
-            //Add it to the feature set.
+            // Add it to the feature set.
             this.features.push(feat);
             this.source.addFeature(feat);
             cat.features.push(feat);
 
-            //Clear the drawing surface.
+            // Clear the drawing surface.
             this.drawingFeatures.clear();
             this.addDrawInteraction(this.currDrawGeometryType);
 
-            //Rebuild the navbar.
+            // Rebuild the navbar.
             this.buildNavPanel();
 
-            //Show the new feature by id.
+            // Show the new feature by id.
             this.selectFeatureFromId(featId);
 
-            //Hide the accept button, and null the current geometry.
+            // Hide the accept button, and null the current geometry.
             this.currDrawGeometry = null;
             this.coordsBox.value = '';
             this.acceptCoords.style.display = 'none';
@@ -861,10 +918,10 @@ class VectorLayer {
         }
     };
 
-//This load procedure is a a discrete process
-//that can be called from the constructor (assuming a GeoJSON
-//file is supplied to the constructor), but can also be called
-//later to replace one set of features with another.
+    // This load procedure is a discrete process
+    // that can be called from the constructor (assuming a GeoJSON
+    // file is supplied to the constructor), but can also be called
+    // later to replace one set of features with another.
     /**
      * Function for loading GeoJSON from a string variable.
      *
@@ -884,8 +941,8 @@ class VectorLayer {
         let listenerKey, showTax, showTaxInt;
 
         try{
-            //Clear existing features on the map, along with taxonomies.
-            //TODO: If source features or taxonomies have been edited, trap and warn.
+            // Clear existing features on the map, along with taxonomies.
+            // TODO: If source features or taxonomies have been edited, trap and warn.
             if (this.source !== null){
                 this.source.clear();
             }
@@ -898,24 +955,24 @@ class VectorLayer {
 
             if (this.taxonomySelector !== null){
 
-                //Remove the wrapper span if removing the taxonomy selector.
+                // Remove the wrapper span if removing the taxonomy selector.
                 this.taxonomySelector.parentNode.parentNode.removeChild(this.taxonomySelector.parentNode);
                 this.taxonomySelector = null;
             }
 
-            //We need to know whether the input string is GeoJSON, TEI or a url.
+            // We need to know whether the input string is GeoJSON, TEI or a url.
 
-            //This is a crude approach: does it contain a curly brace?
+            // This is a crude approach: does it contain a curly brace?
             if (geojson.indexOf('{') > -1){
-            //It's a GeoJSON string;
+            // It's a GeoJSON string;
 
-            //TODO: THIS IS BADLY BROKEN. The features are read, and the navbar is created,
-            //but the map disappears and all features are points in the centre. Don't know
-            //why yet.
+            // TODO: THIS IS BADLY BROKEN. The features are read, and the navbar is created,
+            // but the map disappears and all features are points in the centre. Don't know
+            // why yet.
                 this.source.addFeatures((new ol.format.GeoJSON()).readFeatures(geojson));
             }
             else{
-//It's a URL.
+                //It's a URL.
                 this.featuresUrl = geojson;
                 this.source = new ol.source.Vector({
                     crossOrigin: 'anonymous',
@@ -926,16 +983,16 @@ class VectorLayer {
             }
 
             listenerKey = this.source.on('change', function(e) {
-                var i, maxi, j, maxj, dt;
+                let i, maxi, j, maxj, dt;
                 if (this.source.getState() === 'ready') {
 
-// and unregister the "change" listener
+                    // and unregister the "change" listener
                     ol.Observable.unByKey(listenerKey);
 
                     this.featsLoaded = true;
                     this.features = this.source.getFeatures();
 
-//Now we need to set some additional properties on the features.
+                    // Now we need to set some additional properties on the features.
                     for (i = 0, maxi = this.features.length; i<maxi; i++){
                         this.features[i].setProperties({"showing": false, "selected": false}, true);
                         let p = this.features[i].getProperties();
@@ -952,14 +1009,14 @@ class VectorLayer {
                         }
                     }
 
-//Now build the taxonomy data structure from the information
-//encoded in the features' properties component. If this succeeds
-//(returning the number of taxonomies created), we can move on.
+                    // Now build the taxonomy data structure from the information
+                    // encoded in the features' properties component. If this succeeds
+                    // (returning the number of taxonomies created), we can move on.
 
                     if (this.readTaxonomies() > 0){
 
-//Check the status of the first feature; if its id is not holMap, then
-//create one and insert it, then copy the taxonomies into it.
+                        // Check the status of the first feature; if its id is not holMap, then
+                        // create one and insert it, then copy the taxonomies into it.
                         this.baseFeature = this.source.getFeatureById('holMap');
                         if (this.baseFeature === null){
                             console.log('Creating a holMap feature...');
@@ -968,7 +1025,7 @@ class VectorLayer {
                             this.baseFeature.setProperties({"taxonomies": JSON.toString(this.taxonomies)}, true);
                             this.features.unshift(this.baseFeature);
                         }
-                        //Otherwise, we set the map to the bounds of the first feature.
+                        // Otherwise, we set the map to the bounds of the first feature.
                         else{
                             this.setMapBounds(this.baseFeature.getGeometry().getExtent());
                             this.mapTitle = this.baseFeature.getProperties().mapTitle || '';
@@ -977,21 +1034,21 @@ class VectorLayer {
                             }
                         }
 
-                        //Now check for rich timeline data.
+                        // Now check for rich timeline data.
                         if (this.baseFeature.getProperties().hasOwnProperty('timeline') &&
                             this.baseFeature.getProperties().timeline.hasOwnProperty('richTimelinePoints')){
                             this.timelineData = this.baseFeature.getProperties().timeline.richTimelinePoints;
                         }
 
-//Now we want to discover whether there's a preferred
-//taxonomy to display, based on the URI query string.
-//Start by setting default value; if there are no taxonomies,
-//then -1; else the first one in the list.
+                        // Now we want to discover whether there's a preferred
+                        // taxonomy to display, based on the URI query string.
+                        // Start by setting default value; if there are no taxonomies,
+                        // then -1; else the first one in the list.
                         this.currTaxonomy = 0;
                         showTax = (this.initialTaxonomyId == '')? util.Util.getQueryParam('taxonomy') : this.initialTaxonomyId;
                         //showTax = util.Util.getQueryParam('taxonomy');
                         if (showTax.length > 0){
-//It may be a name or an index number.
+                            // It may be a name or an index number.
                             showTaxInt = parseInt(showTax);
                             if ((Number.isInteger(showTaxInt))&&(showTaxInt < this.taxonomies.length)){
                                 this.currTaxonomy = showTaxInt;
@@ -1014,18 +1071,18 @@ class VectorLayer {
                         this.buildNavPanel();
                         this.buildTimeline();
 
-//Now we can parse the query string in case anything is supposed
-//to be shown by default.
+                        // Now we can parse the query string in case anything is supposed
+                        // to be shown by default.
                         this.parseSearch();
 
-                        //Finally we're ready.
+                        // Finally we're ready.
                         this.afterLoading();
                     }
                 }
             }.bind(this));
 
 
-//Success.
+            // Success.
             return true;
         }
         catch(e){
@@ -1034,10 +1091,9 @@ class VectorLayer {
         }
     };
 
-// //This procedure is adapted from
-//     loadGeoJSONFromString
-// //to provide an option for appending the contents of a GeoJSON file to the
-// //existing set of features.
+    //This procedure is adapted from loadGeoJSONFromString
+    //to provide an option for appending the contents of a GeoJSON file to the
+    //existing set of features.
     /**
      * Function for loading GeoJSON from a string variable without
      * removing existing features.
@@ -1055,8 +1111,8 @@ class VectorLayer {
      */
 
     appendGeoJSONFromString = function(geojson){
-//Vars
-        var listenerKey, showTax, showTaxInt;
+
+        let listenerKey, showTax, showTaxInt;
 
         try{
 
@@ -1068,24 +1124,24 @@ class VectorLayer {
 
             if (this.taxonomySelector !== null){
 
-                //Remove the wrapper span if removing the taxonomy selector.
+                // Remove the wrapper span if removing the taxonomy selector.
                 this.taxonomySelector.parentNode.parentNode.removeChild(this.taxonomySelector.parentNode);
                 this.taxonomySelector = null;
             }
 
-//We need to know whether the input string is GeoJSON, TEI or a url.
+                // We need to know whether the input string is GeoJSON, TEI or a url.
 
-//This is a crude approach: does it contain a curly brace?
-            if (geojson.indexOf('{') > -1){
-//It's a GeoJSON string;
+                // This is a crude approach: does it contain a curly brace?
+                            if (geojson.indexOf('{') > -1){
+                // It's a GeoJSON string;
 
-//TODO: THIS IS BADLY BROKEN. The features are read, and the navbar is created,
-//but the map disappears and all features are points in the centre. Don't know
-//why yet.
+                // TODO: THIS IS BADLY BROKEN. The features are read, and the navbar is created,
+                // but the map disappears and all features are points in the centre. Don't know
+                // why yet.
                 this.source.addFeatures((new ol.format.GeoJSON()).readFeatures(geojson));
             }
             else{
-//It's a URL.
+                // It's a URL.
 
                 this.tmpSource = new ol.source.Vector({
                     crossOrigin: 'anonymous',
@@ -1095,13 +1151,13 @@ class VectorLayer {
             }
 
             listenerKey = this.tmpSource.on('change', function(e) {
-                var i, maxi;
+                let i, maxi;
                 if (this.tmpSource.getState() === 'ready') {
 
-// and unregister the "change" listener
+                    // and unregister the "change" listener
                     ol.Observable.unByKey(listenerKey);
 
-//Now we need to set some additional properties on the new features.
+                    // Now we need to set some additional properties on the new features.
                     this.tmpSource.forEachFeature(function(feat){
                         if (feat.getId() != 'holMap'){
                             feat.setProperties({"showing": false, "selected": false}, true);
@@ -1115,20 +1171,20 @@ class VectorLayer {
 
                     this.features = this.source.getFeatures();
 
-//Now build the taxonomy data structure from the information
-//encoded in the features' properties component. If this succeeds
-//(returning the number of taxonomies created), we can move on.
+                    // Now build the taxonomy data structure from the information
+                    // encoded in the features' properties component. If this succeeds
+                    // (returning the number of taxonomies created), we can move on.
 
                     if (this.readTaxonomies() > 0){
 
-//Now we want to discover whether there's a preferred
-//taxonomy to display, based on the URI query string.
-//Start by setting default value; if there are no taxonomies,
-//then -1; else the first one in the list.
+                        // Now we want to discover whether there's a preferred
+                        // taxonomy to display, based on the URI query string.
+                        // Start by setting default value; if there are no taxonomies,
+                        // then -1; else the first one in the list.
                         this.currTaxonomy = 0;
                         showTax = util.Util.getQueryParam('taxonomy');
                         if (showTax.length > 0){
-//It may be a name or an index number.
+                            // It may be a name or an index number.
                             showTaxInt = parseInt(showTax);
                             if ((Number.isInteger(showTaxInt))&&(showTaxInt < this.taxonomies.length)){
                                 this.currTaxonomy = showTaxInt;
@@ -1151,7 +1207,7 @@ class VectorLayer {
 
             this.tmpSource.loadFeatures();
 
-//Success.
+            // Success.
             return true;
         }
         catch(e){
@@ -1175,7 +1231,7 @@ class VectorLayer {
      */
 
     downloadGeoJSON = function(){
-        var el, geojson, mapjson, outFeats;
+        let el, geojson, mapjson, outFeats;
         try{
             geojson = new ol.format.GeoJSON();
             outFeats = [this.baseFeature];
@@ -1216,18 +1272,18 @@ class VectorLayer {
      */
 
     pasteGeoJSON = function(){
-        var geojson, pastedText;
+        let geojson, pastedText;
         try{
             geojson = new ol.format.GeoJSON();
             pastedText = window.prompt(this.captions.strPasteHere, '{"type": "Feature"}');
 
-//TODO: Finish this function.
+        // TODO: Finish this function.
 
-//Check the object is parseable.
+        // Check the object is parseable.
 
-//Create a temporary feature with it.
+        // Create a temporary feature with it.
 
-//Set up drawing for this feature.
+        // Set up drawing for this feature.
 
         }
         catch(e){
@@ -1279,14 +1335,14 @@ class VectorLayer {
      */
 
     readTaxonomies = function(){
-        var hasName, i, maxi, j, maxj, k, maxk, props, taxName, taxPos, taxId,
+        let hasName, i, maxi, j, maxj, k, maxk, props, taxName, taxPos, taxId,
             catName, catDesc, catPos, catId, catIcon, catIconDim, foundTax, foundCat, maxPos = 0;
 
-//We read the taxonomies based on finding them in the features,
-//just in case a subset of features has been separated from the
-//base feature which includes all the taxonomies.
+        // We read the taxonomies based on finding them in the features,
+        // just in case a subset of features has been separated from the
+        // base feature which includes all the taxonomies.
 
-//Function for filtering taxonomy and category arrays by name.
+        // Function for filtering taxonomy and category arrays by name.
         hasName = function(element, index, array){
             return element.name === this;
         };
@@ -1301,8 +1357,8 @@ class VectorLayer {
                         taxPos = props.taxonomies[j].pos;
                         maxPos = Math.max((maxPos, taxPos));
                         taxId = props.taxonomies[j].id;
-                        //If this is the first time we're encountering this taxonomy, add it
-                        //to the array.
+                        // If this is the first time we're encountering this taxonomy, add it
+                        // to the array.
                         foundTax = this.taxonomies.filter(hasName, taxName);
 
                         if (foundTax.length < 1){
@@ -1328,9 +1384,9 @@ class VectorLayer {
                     }
                 }
             }
-//Now we sort according to positions recorded in the GeoJSON file, so that
-//the map interface reflects the order assigned by the user in the originating
-//TEI taxonomy setup.
+            // Now we sort according to positions recorded in the GeoJSON file, so that
+            // the map interface reflects the order assigned by the user in the originating
+            // TEI taxonomy setup.
             this.taxonomies.sort(function(a,b){
                 if (a.pos < b.pos){return -1;}
                 if (a.pos > b.pos){return 1;}
@@ -1344,8 +1400,8 @@ class VectorLayer {
                 });
             }
 
-//If there's more than one taxonomy, and the option has been set to
-//create a final combined taxonomy, do so.
+            // If there's more than one taxonomy, and the option has been set to
+            // create a final combined taxonomy, do so.
             if ((this.taxonomies.length > 1) && (this.allFeaturesTaxonomy)){
                 taxName = 'All';
                 taxPos = maxPos + 1;
@@ -1387,13 +1443,13 @@ class VectorLayer {
      */
 
     taxonomyHasCategory = function(taxNum, catId){
-        var i, maxi;
+        let i, maxi;
         try{
-//First we check whether the taxonomy exists.
+            // First we check whether the taxonomy exists.
             if ((taxNum < 0) || (taxNum >= this.taxonomies.length)){
                 return false;
             }
-//Now we figure out if the category is a string or a number.
+            // Now we figure out if the category is a string or a number.
             for (i=0, maxi=this.taxonomies[taxNum].categories.length; i<maxi; i++){
                 if (this.taxonomies[taxNum].categories[i].id === catId){
                     return true;
@@ -1426,13 +1482,13 @@ class VectorLayer {
      */
 
     taxonomyHasFeature = function(taxNum, featId){
-        var i, maxi, j, maxj;
+        let i, maxi, j, maxj;
         try{
-//First we check whether the taxonomy exists.
+            // First we check whether the taxonomy exists.
             if ((taxNum < 0) || (taxNum >= this.taxonomies.length)){
                 return false;
             }
-//Now we figure out if the category is a string or a number.
+            // Now we figure out if the category is a string or a number.
             for (i=0, maxi=this.taxonomies[taxNum].categories.length; i<maxi; i++){
                 for (j=0, maxj=this.taxonomies[taxNum].categories[i].features.length; j<maxj; j++){
                     if (this.taxonomies[taxNum].categories[i].features[j].getId() === featId){
@@ -1463,7 +1519,7 @@ class VectorLayer {
      */
 
     newTaxonomy = function(){
-        var taxName, taxId;
+        let taxName, taxId;
         try{
             //Now ask for a name from the user.
             taxName = window.prompt(this.captions.strGetTaxonomyName, '');
@@ -1501,7 +1557,7 @@ class VectorLayer {
      */
 
     newCategory = function(){
-        var catName, catId, catDesc, catPos;
+        let catName, catId, catDesc, catPos;
         try{
             //Now ask for a name from the user.
             catName = window.prompt(this.captions.strGetCategoryName, '');
@@ -1543,7 +1599,7 @@ class VectorLayer {
      */
 
     getSplashScreen = function(){
-        var loading, spinner;
+        let loading, spinner;
         try{
             this.splash = document.getElementById('splash');
             if (this.splash === null){
@@ -1636,9 +1692,9 @@ class VectorLayer {
      */
 
     browserShims = function(){
-        var rightBox, result = false;
+        let rightBox, result = false;
         try{
-//Safari 9.1 and IE 11 bug with Flex container sizing.
+            // Safari 9.1 and IE 11 bug with Flex container sizing.
             rightBox = document.getElementById('holRightBox');
             if (rightBox.offsetHeight < 20){
                 rightBox.style.height = '100%';
@@ -1667,7 +1723,7 @@ class VectorLayer {
      */
 
     zoomToBox = function(boxExtent){
-        var featId, featNum, featNums = [];
+        let featId, featNum, featNums = [];
         try{
             this.source.forEachFeatureInExtent(boxExtent, function(hitFeature){
                 if (ol.extent.containsExtent(boxExtent, hitFeature.getGeometry().getExtent())){
@@ -1703,7 +1759,7 @@ class VectorLayer {
      */
 
     buildToolbar = function(){
-        var form, div, img;
+        let form, div, img;
         try{
             form = document.createElement('form');
             form.addEventListener('submit', function(e){e.preventDefault(); return false;});
@@ -1781,7 +1837,7 @@ class VectorLayer {
      */
 
     buildTaxonomySelector = function(){
-        var i, maxi, opt, wrapper;
+        let i, maxi, opt, wrapper;
         try{
             if (this.taxonomySelector !== null){
                 //Remove the wrapper span if removing the taxonomy selector.
@@ -1830,7 +1886,7 @@ class VectorLayer {
      */
 
     changeTaxonomy = function(sender){
-        var newTax;
+        let newTax;
         try{
             newTax = sender.selectedIndex;
             if ((newTax > -1) && (newTax < this.taxonomies.length) && (newTax !== this.currTaxonomy)){
@@ -1865,13 +1921,13 @@ class VectorLayer {
             catTitleSpan, thisCatUl, thisCatFeatures, f, props, thisFeatLi,
             thisFeatChk, thisFeatSpan, i, maxi, infoCloseDiv, closeBtn, editBtn, contentDiv;
         try{
-//Sanity check:
+            // Sanity check:
             if (this.currTaxonomy < 0){
                 throw new Error('No taxonomy to display; current taxonomy set to ' + this.currTaxonomy + '.');
             }
 
-//If the navPanel has already been created, we just have to empty the
-//categories and re-create them..
+            // If the navPanel has already been created, we just have to empty the
+            // categories and re-create them.
             catUl = doc.getElementById('holCategories');
             if (catUl !== null){
                 while (catUl.firstChild) {
@@ -1879,7 +1935,7 @@ class VectorLayer {
                 }
             }
             else{
-//It's the first run; we have to create the navPanel.
+                // It's the first run; we have to create the navPanel.
                 form = doc.createElement('form');
                 form.addEventListener('submit', function(e){e.preventDefault(); return false;});
                 rightBox = doc.createElement('div');
@@ -1931,8 +1987,8 @@ class VectorLayer {
                 catUl.setAttribute('id', 'holCategories');
                 navPanel.appendChild(catUl);
                 rightBox.appendChild(navPanel);
-//Now we create a div for displaying descriptive info from the
-//features.
+                // Now we create a div for displaying descriptive info from the
+                // features.
                 this.infoDiv = doc.createElement('div');
                 this.infoDiv.setAttribute('id', 'holInfo');
                 infoCloseDiv = doc.createElement('div');
@@ -1977,7 +2033,7 @@ class VectorLayer {
                 catTitleSpan = doc.createElement('span');
                 catTitleSpan.appendChild(doc.createTextNode(cats[catNum].name));
                 catLi.appendChild(catTitleSpan);
-                //catTitleSpan.addEventListener('click', util.Util.expandCollapseCategory.bind(this, catTitleSpan), false);
+                // catTitleSpan.addEventListener('click', util.Util.expandCollapseCategory.bind(this, catTitleSpan), false);
                 catTitleSpan.addEventListener('click', util.Util.expandCollapseCategory.bind(this, catTitleSpan, catNum), false);
                 thisCatUl = doc.createElement('ul');
                 thisCatFeatures = cats[catNum].features;
@@ -2046,12 +2102,12 @@ class VectorLayer {
             if (!this.timelineData){
                 return true;
             }
-            //These are the things we need.
+            // These are the things we need.
             let i, imax, cont, dl, opt, slider, cbx, btns, stepB, play, stepF, label, img;
             cont = document.createElement('div');
             cont.classList.add('timeline');
-            //Note: No browser currently supports the use of datalist.
-            //This is forward-looking.
+            // Note: No browser currently supports the use of datalist.
+            // This is forward-looking.
             dl = document.createElement('datalist');
             dl.setAttribute('id', 'tlPoints');
             for (i = 0, imax=this.timelineData.length; i < imax; i++){
@@ -2081,7 +2137,7 @@ class VectorLayer {
             label.appendChild(document.createTextNode(this.captions.strTimeline));
             cont.appendChild(label);
 
-            //Control buttons for playback.
+            // Control buttons for playback.
             btns = document.createElement('span');
 
             stepB = document.createElement('button');
@@ -2182,7 +2238,7 @@ class VectorLayer {
 
     toggleTimeline = function(sender){
         try{
-            //Whatever happens, we're resetting the play button to show the play icon.
+            // Whatever happens, we're resetting the play button to show the play icon.
             this.playImg.setAttribute('src', 'images/play-circle.svg');
             this.playImg.setAttribute('title', this.captions.strPlay);
             if (sender.checked){
@@ -2192,8 +2248,8 @@ class VectorLayer {
                 this.stepForwardButton.disabled = false;
                 this.timelineChange(this.timeline);
                 this.timeline.parentElement.classList.add('enabled');
-                //If pan/zoom is turned off, it makes sense to zoom initially
-                //to the base layer frame.
+                // If pan/zoom is turned off, it makes sense to zoom initially
+                // to the base layer frame.
                 if (this.timelinePanZoom === false){
                     this.setMapBounds(this.baseFeature.getGeometry().getExtent());
                 }
@@ -2243,18 +2299,18 @@ class VectorLayer {
 
             let tp = this.timelinePoints[val];
 
-            //First we get a list of featNums which are currently showing
-            //but need to be hidden.
+            // First we get a list of featNums which are currently showing
+            // but need to be hidden.
             let featNumsToHide = new Set([...this.lastTimelineFeatNums].filter(x => !tp.featNums.has(x)));
 
-            //We need a set of the featNums which were showing before and should remain so.
+            // We need a set of the featNums which were showing before and should remain so.
             let featNumsToKeepShowing = new Set([...this.lastTimelineFeatNums].filter(x => tp.featNums.has(x)))
 
-            //Next, we need a list of features in the new set which were not
-            //previously showing, so need to be shown (assuming they match the taxonomy).
+            // Next, we need a list of features in the new set which were not
+            // previously showing, so need to be shown (assuming they match the taxonomy).
             let featNumsToShowNew = new Set([...tp.featNums].filter(x => !this.lastTimelineFeatNums.has(x)));
 
-            //Change the label to show the current timeline item.
+            // Change the label to show the current timeline item.
             document.getElementById('lblTimeline').innerHTML = this.timelinePoints[val].label;
 
             this.stepBackButton.disabled = !(parseInt(sender.value) > this.timeline.min);
@@ -2263,19 +2319,19 @@ class VectorLayer {
 
             if (this.timelinePanZoom){
                 let feats = [...featNumsToKeepShowing, ...featNumsToShowNew];
-                //console.log(feats);
+                // console.log(feats);
                 if ((feats.length > 1)||((feats.length === 1) && (this.features[feats[0]].getGeometry().GeometryType !== 'Point'))){
                     this.centerOnFeatures(feats);
                 }
             }
 
-            //Now hide the ones that need to be hidden.
+            // Now hide the ones that need to be hidden.
             for (let featNum of featNumsToHide) this.showHideFeature(false, featNum, -1);
 
-            //Set the style of those to keep showing. We do this by showing them again.
+            // Set the style of those to keep showing. We do this by showing them again.
             for (let featNum of featNumsToKeepShowing) this.showHideFeature(true, featNum, -1);
 
-            //Finally we show the new ones with the selected style.
+            // Finally we show the new ones with the selected style.
             featNumsToShowNew.forEach(function(featNum){
                 this.showHideFeature(true, featNum, -1);
                 let catNum = this.features[featNum].getProperties().showingCat;
@@ -2289,10 +2345,10 @@ class VectorLayer {
             }.bind(this));
 
 
-            //Now we replace the old list of showing features with the new one.
+            // Now we replace the old list of showing features with the new one.
             this.lastTimelineFeatNums = new Set(tp.featNums);
 
-            //Generate a custom event that can be hooked by external code.
+            // Generate a custom event that can be hooked by external code.
             let ev = new CustomEvent('timelineChange', {detail: {timelinePoint: tp, playing: (this.playInterval !== null)}});
             document.dispatchEvent(ev);
 
@@ -2319,25 +2375,25 @@ class VectorLayer {
     timelinePlay = function(){
         let i, maxi;
         try{
-            //Are we already playing? If so, stop.
+            // Are we already playing? If so, stop.
             if (this.playInterval !== null){
                 try{clearInterval(this.playInterval);}catch(e){'Failed to clear play interval.'};
                 this.playImg.setAttribute('src', 'images/play-circle.svg');
                 this.playImg.setAttribute('title', this.captions.strPlay);
                 this.playInterval = null;
-                //Now make sure all showing features have their default style.
+                // Now make sure all showing features have their default style.
                 for (i = 1, maxi = this.features.length; i<maxi; i++){
                     if (this.features[i].getProperties().showing){
                         this.showHideFeature(true, i, -1);
                     }
                 }
-                //Generate a custom event that can be hooked by external code.
+                // Generate a custom event that can be hooked by external code.
                 let ev = new CustomEvent('timelineChange', {detail: {timelinePoint: this.timelinePoints[this.timeline.value], playing: false}});
                 document.dispatchEvent(ev);
                 return true;
             }
 
-            //Otherwise, we start playing.
+            // Otherwise, we start playing.
             this.playImg.setAttribute('src', 'images/stop-circle.svg');
             this.playImg.setAttribute('title', this.captions.strStopPlay);
 
@@ -2375,7 +2431,7 @@ class VectorLayer {
      */
 
     timelineStep = function(step){
-        //Stop playing if we're playing.
+        // Stop playing if we're playing.
         if (this.playInterval !== null){this.timelinePlay();}
         (step < 0)? this.timeline.stepDown() : this.timeline.stepUp();
         this.timelineChange(this.timeline);
@@ -2426,14 +2482,14 @@ class VectorLayer {
      */
 
     getTaxNumFromId = function(taxId, defVal){
-        let i, maxi, result = defVal;
+        let i, maxi;
         try{
             for (i=0, maxi=this.taxonomies.length; i<maxi; i++){
                 if (this.taxonomies[i].id === taxId){
                     return i;
                 }
             }
-            return result;
+            return defVal;
         }
         catch(e){
             console.error(e.message);
@@ -2527,13 +2583,13 @@ class VectorLayer {
         try{
             if ((featNum < 0) || (featNum >= this.features.length)){return false;}
 
-//First we determine an appropriate category for the feature, either
-//the one passed into the function, or the first one in the feature's
-//own array.
+            // First we determine an appropriate category for the feature, either
+            // the one passed into the function, or the first one in the feature's
+            // own array.
             thisFeature = this.features[featNum];
             featId = thisFeature.getId();
 
-//Now we check that it's in the current taxonomy. If not, we don't show it.
+            // Now we check that it's in the current taxonomy. If not, we don't show it.
             if (this.taxonomyHasFeature(this.currTaxonomy, featId) === false){
                 return false;
             }
@@ -2545,10 +2601,10 @@ class VectorLayer {
             //Retrieve the cat itself.
             cat = this.taxonomies[this.currTaxonomy].categories[catNum];
 
-//TODO: We get the catId so that we can retrieve the icon info for the
-//category if there is a custom icon.
+            // TODO: We get the catId so that we can retrieve the icon info for the
+            // category if there is a custom icon.
 
-//Now we show or hide the feature.
+            // Now we show or hide the feature.
             this.featureDisplayStatus = constants.NAV_SHOWHIDING_FEATURES;
             if (show === true){
                 thisFeature.setStyle(util.Util.getCategoryStyle(catNum, cat.icon, cat.iconDim));
@@ -2560,19 +2616,19 @@ class VectorLayer {
                 thisFeature.setStyle(util.Util.hiddenStyle);
                 thisFeature.setProperties({"showing": false, "showingCat": -1});
             }
-//Next, we set the status of all the checkboxes associated with this
-//feature.
+            // Next, we set the status of all the checkboxes associated with this
+            // feature.
             this.featureDisplayStatus = constants.NAV_HARMONIZING_FEATURE_CHECKBOXES;
             for (i=0, maxi=this.featureCheckboxes.length; i<maxi; i++){
                 if (this.featureCheckboxes[i].getAttribute('data-featNum') === featNum.toString()){
                     this.featureCheckboxes[i].checked = show;
                 }
             }
-//Finally we need to harmonize the status of the category checkboxes.
+            // Finally we need to harmonize the status of the category checkboxes.
             this.featureDisplayStatus = constants.NAV_HARMONIZING_CATEGORY_CHECKBOXES;
             this.harmonizeCategoryCheckboxes();
 
-//We're done
+            // We're done
             this.featureDisplayStatus = constants.NAV_IDLE;
             return true;
         }
@@ -2606,7 +2662,7 @@ class VectorLayer {
         }
         featuresChanged = 0;
 
-//If hiding, we just hide everything.
+        // If hiding, we just hide everything.
         if (showVal === false){
             for (i=0, maxi=this.features.length; i<maxi; i++){
                 if (this.features[i].getProperties().showing !== showVal){
@@ -2615,8 +2671,8 @@ class VectorLayer {
                 }
             }
         }
-//Otherwise we show only the features for the currently-selected
-//taxonomy.
+        // Otherwise we show only the features for the currently-selected
+        // taxonomy.
         else{
             currTaxCats = this.taxonomies[this.currTaxonomy].categories;
             for (i=0, maxi=currTaxCats.length; i<maxi; i++){
@@ -2654,8 +2710,8 @@ class VectorLayer {
 
 
     showHideFeatureFromNav = function(sender, featNum, catNum){
-//If a change has resulted from an action happening in code rather
-//than a user interaction, then do nothing.
+        // If a change has resulted from an action happening in code rather
+        // than a user interaction, then do nothing.
         let success = false;
         if (this.featureDisplayStatus !== constants.NAV_IDLE){return success;}
 
@@ -2716,8 +2772,8 @@ class VectorLayer {
      */
 
     harmonizeCategoryCheckboxes = function(){
-//Variables for tracking what we need to know for the
-//all-controlling checkbox chkShowAll.
+        // Variables for tracking what we need to know for the
+        // all-controlling checkbox chkShowAll.
         let allChecked = true, allUnchecked = true, allIndeterminate = false, i, maxi, j, maxj, hasChecked, hasUnchecked, childInputs;
         try{
             for (i=0, maxi=this.categoryCheckboxes.length; i<maxi; i++){
@@ -2823,9 +2879,9 @@ class VectorLayer {
             }
             if (geoms.length > 0){
                 geomCol = new ol.geom.GeometryCollection(geoms);
-                extent = geomCol.getExtent();
-//Now we need to allow for the fact that a big block of the map
-//is invisible under the navigation, info and doc panels.
+                extent = geomCol.getExtent()
+                // Now we need to allow for the fact that a big block of the map
+                // is invisible under the navigation, info and doc panels.
                 if (parseInt(window.getComputedStyle(this.docDisplayDiv).left) > -1){
                     leftMargin = this.docDisplayDiv.offsetWidth + 20;
                 }
@@ -2944,9 +3000,9 @@ class VectorLayer {
             featNum = this.getFeatNumFromId(featId, -1);
             if (featNum > -1){
                 catNum = this.getCurrFirstCatNum(featId);
-//Check whether it's included in the currently-selected taxonomy.
+                // Check whether it's included in the currently-selected taxonomy.
                 if (catNum > -1){
-//If an index is found, show that feature and select it.
+                    // If an index is found, show that feature and select it.
                     this.showHideFeature(true, featNum, catNum);
                     this.setSelectedFeature(featNum, true);
                     this.centerOnFeatures([featNum]);
@@ -2982,16 +3038,16 @@ class VectorLayer {
 
     setSelectedFeature = function(featNum, jumpInNav){
         let currFeat, props, ul, showDoc, readMore, catNum, cat, catLi, featLi, i, imax;
-//First deselect any existing selection.
+        // First deselect any existing selection.
         try{
             this.deselectFeature();
-//Next, select this feature.
+            // Next, select this feature.
             this.selectedFeature = featNum;
             currFeat = this.features[featNum];
             props = currFeat.getProperties();
 
-//First find the appropriate category: either the one it was shown with, or the first
-//in its list.
+            // First find the appropriate category: either the one it was shown with, or the first
+            // in its list.
             catNum = currFeat.getProperties().showingCat;
             if (catNum < 0){
                 catNum = this.getCatNumFromId(currFeat.getProperties().categories[0]);
@@ -3000,11 +3056,11 @@ class VectorLayer {
 
             currFeat.setStyle(util.Util.getSelectedStyle(cat.icon, cat.iconDim));
             currFeat.setProperties({"selected": true});
-//Set the title of the popup to the name of the feature.
+            // Set the title of the popup to the name of the feature.
             this.infoDiv.querySelector('h2').innerHTML = props.name;
-//Set the content of the popup to the description of the feature.
+            // Set the content of the popup to the description of the feature.
             this.infoDiv.querySelector("div[id='infoContent']").innerHTML = props.desc;
-//Show the edit button if we're allowing feature editing.
+            // Show the edit button if we're allowing feature editing.
             if (this.allowDrawing){
                 this.infoDiv.querySelector("button[id='btnEditFeature']").style.display = 'inline-block';
             }
@@ -3025,12 +3081,12 @@ class VectorLayer {
                 this.infoDiv.querySelector("div[id='infoContent']").appendChild(ul);
             }
             this.infoDiv.style.display = 'block';
-//Now highlight and if necessary show the appropriate entry in the navigation panel.
+            // Now highlight and if necessary show the appropriate entry in the navigation panel.
 
-//Next, make sure that category is expanded in the navigation panel.
+            // Next, make sure that category is expanded in the navigation panel.
             catLi = document.getElementById('catLi_' + catNum);
             if (!catLi.classList.contains('expanded')){catLi.classList.add('expanded');}
-//Now we have to find the feature item in that category.
+            // Now we have to find the feature item in that category.
             featLi = catLi.querySelector('li#featLi_' + catNum + '_' + featNum);
             if (!featLi.classList.contains('selected')){
                 featLi.classList.add('selected');
@@ -3064,24 +3120,24 @@ class VectorLayer {
         let tmpFeat, evt;
         try{
             if ((this.selectedFeature > -1)&&(this.allowDrawing)){
-//Clear existing drawing (should we warn first?)
+                // Clear existing drawing (should we warn first?)
                 this.drawingFeatures.clear();
 
-//Clone the current feature
+                // Clone the current feature
                 tmpFeat = this.features[this.selectedFeature].clone();
 
-//Find its geometry type, and set up drawing for that drawing type
+                // Find its geometry type, and set up drawing for that drawing type
                 this.addDrawInteraction(tmpFeat.getGeometry().getType());
                 tmpFeat.setStyle(util.Util.getDrawingStyle());
 
-//Deselect the current feature.
+                // Deselect the current feature.
                 this.showHideFeature(false, this.selectedFeature);
 
-//Assign the feature to the drawing layer
+                // Assign the feature to the drawing layer
                 this.drawingFeatures.push(tmpFeat);
 
-//Run the drawing-done function to write the geometry to the
-//coords box.
+                // Run the drawing-done function to write the geometry to the
+                // coords box.
                 evt = {feature: tmpFeat};
                 this.drawEnd(evt);
 
@@ -3133,20 +3189,20 @@ class VectorLayer {
             upload;
         result = 0;
 
-//First deselect any existing selection.
+        // First deselect any existing selection.
         this.deselectFeature();
 
-//Now hide any features currently showing.
+        // Now hide any features currently showing.
         this.showHideAllFeatures(null, false);
 
-//Hide the document display box.
+        // Hide the document display box.
         //this.docDisplayDiv.style.display = 'none';
         //this.docDisplayDiv.style.left = '-21rem';
         this.docDisplayDiv.classList.add('hidden');
         this.docDisplayFrame.src = '';
 
         try{
-//First parse for a document to display.
+            // First parse for a document to display.
             docPath = util.Util.getQueryParam('docPath');
             if (docPath.length > 0){
                 this.showDocument(docPath);
@@ -3157,21 +3213,21 @@ class VectorLayer {
                 }
             }
 
-//Now parse the URL for category ids.
+            // Now parse the URL for category ids.
             catIds = util.Util.getQueryParam('catIds');
             if (catIds.length > 0){
                 arrCatIds = catIds.split(';');
                 for (i=0, maxi=arrCatIds.length; i<maxi; i++){
 
-//For each category id found, check whether it's part of the currently-displayed
-//taxonomy.
+                    // For each category id found, check whether it's part of the currently-displayed
+                    // taxonomy.
                     if (this.taxonomyHasCategory(this.currTaxonomy, arrCatIds[i])){
-//Now look for a corresponding
-//category number.
+                        // Now look for a corresponding
+                        // category number.
                         catNum = this.getCatNumFromId(arrCatIds[i], -1);
-//If a cat number is found, show all items in that category.
+                        // If a cat number is found, show all items in that category.
                         if (catNum > -1){
-//We simply check the appropriate checkbox.
+                            // We simply check the appropriate checkbox.
                             catChk = document.querySelector('input[data-catNum="' + catNum + '"]');
                             if (catChk !== null){
                                 catChk.checked = true;
@@ -3183,18 +3239,18 @@ class VectorLayer {
                 }
             }
 
-//Now parse the search string for individual features.
+            // Now parse the search string for individual features.
             featIds = util.Util.getQueryParam('featIds');
             if (featIds.length > 0){
                 arrFeatNums = [];
                 arrFeatIds = featIds.split(';');
-//For each feature id, check for a feature index number.
+                // For each feature id, check for a feature index number.
                 for (i=0, maxi=arrFeatIds.length; i<maxi; i++){
                     featNum = this.getFeatNumFromId(arrFeatIds[i], -1);
                     catNum = this.getCurrFirstCatNum(arrFeatIds[i]);
-//Check whether it's included in the currently-selected taxonomy.
+                    // Check whether it's included in the currently-selected taxonomy.
                     if (catNum > -1){
-//If an index is found, show that feature and select it.
+                        // If an index is found, show that feature and select it.
                         if (featNum > -1){
                             this.showHideFeature(true, featNum, catNum);
                             this.setSelectedFeature(featNum, true);
@@ -3204,27 +3260,27 @@ class VectorLayer {
                     }
                 }
             }
-//If more than one feature is specified, then deselect the selected one (which would be the last).
+            // If more than one feature is specified, then deselect the selected one (which would be the last).
             if (result > 1){this.deselectFeature();}
 
-//Now we should zoom to the highlighted features.
+            // Now we should zoom to the highlighted features.
             if (result > 0){
                 this.centerOnFeatures(arrFeatNums);
             }
 
-//Now check whether we want to allow feature editing.
+            // Now check whether we want to allow feature editing.
             drawing = util.Util.getQueryParam('drawing');
             if (drawing.length > 0){
                 this.setupDrawing();
             }
 
-//Now check whether we want to allow JSON file upload.
+            // Now check whether we want to allow JSON file upload.
             upload = util.Util.getQueryParam('upload');
             if (upload.length > 0){
                 this.setupUpload();
             }
 
-//Now check for the current location feature.
+            // Now check for the current location feature.
             currLoc = util.Util.getQueryParam('currLoc');
             if (currLoc != ''){
                 this.toggleTracking(true);
@@ -3255,7 +3311,7 @@ class VectorLayer {
         let caption, input;
         try{
             //alert(sender.innerHTML);
-//Always start by resetting the visibility of everything.
+            // Always start by resetting the visibility of everything.
             this.doLocationSearch(false);
             caption = document.getElementById('navCaption');
             input = document.getElementById('inpNavSearch');
@@ -3311,11 +3367,11 @@ class VectorLayer {
                 items = this.navPanel.getElementsByTagName('li');
                 for (i=0, maxi=items.length; i<maxi; i++){
                     if (items[i].parentNode.id === 'holCategories'){
-                        //This is a category container. Hide its category checkbox and triangle marker,
-                        //and show its child ul.
+                        // This is a category container. Hide its category checkbox and triangle marker,
+                        // and show its child ul.
                         items[i].classList.add('searchCatHeader');
                         items[i].getElementsByTagName('input')[0].classList.add('hidden');
-                        //items[i].getElementsByTagName('span')[0].classList.add('hidden');
+                        // items[i].getElementsByTagName('span')[0].classList.add('hidden');
 
                         hits = 0;
                         descendants = items[i].getElementsByTagName('li');
@@ -3366,8 +3422,8 @@ class VectorLayer {
         try{
             this.docDisplayFrame.setAttribute('src', this.linkPrefix + docPath);
             this.docDisplayDiv.classList.remove('hidden');
-//TODO: MAKE THIS AN EVENT LISTENER!
-            //window.setTimeout(function(){this.rewriteHolLinks(this.docDisplayFrame.contentDocument.getElementsByTagName('body')[0]);}.bind(this), 100);
+            //  TODO: MAKE THIS AN EVENT LISTENER!
+            // window.setTimeout(function(){this.rewriteHolLinks(this.docDisplayFrame.contentDocument.getElementsByTagName('body')[0]);}.bind(this), 100);
             return true;
         }
         catch(e){
@@ -3443,9 +3499,9 @@ class VectorLayer {
             }
             else{
                 if (this.userPositionMarker !== null){
-                    //Delete the position marker
+                    // Delete the position marker
                     this.source.removeFeature(this.userPositionMarker);
-                    //Clear the position watcher
+                    // Clear the position watcher
                     navigator.geolocation.clearWatch(this.geolocationId);
 
 
@@ -3486,8 +3542,8 @@ class VectorLayer {
             this.userPositionMarker.setGeometry(coords ? new ol.geom.Point(coords) : null);
             //Centre on the new position.
             extent = this.userPositionMarker.getGeometry().getExtent();
-//Now we need to allow for the fact that a big block of the map
-//is invisible under the navigation, info and doc panels.
+            // Now we need to allow for the fact that a big block of the map
+            // is invisible under the navigation, info and doc panels.
             if (parseInt(window.getComputedStyle(this.docDisplayDiv).left) > -1) {
                 leftMargin = parseInt(window.getComputedStyle(this.docDisplayDiv).width);
             }
