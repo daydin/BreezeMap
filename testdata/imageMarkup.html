@@ -50,12 +50,14 @@
     </p>
 </div>
 
-<script type="text/ecmascript">
-    <!--
+<script type="module">
+
     /* Initial setup of the map with default controls using Tileset created by HCMC from
        Open Street Maps dataset. */
 
     //Globals...
+    import {VectorLayer} from "../js/vectorlayer.js";
+
     var extent = [0, 0, 600, 960];
     var projection = new ol.proj.Projection({
         code: 'imt-image',
@@ -120,7 +122,7 @@
         initImageMarkup();
     });
 
-    -->
+
 </script>
 
 
