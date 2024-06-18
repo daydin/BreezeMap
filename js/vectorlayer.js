@@ -259,7 +259,7 @@ class VectorLayer {
     }
 
 
-    setupEditingMenu = function(){
+    setupEditingMenu(){
         try{
             if (this.menu === null){
                 this.menu = document.createElement('ul');
@@ -286,7 +286,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    setupUpload = function(){
+    setupUpload(){
         let input, ul, itemUp, itemDown, itemPaste;
         try{
             if (this.fileMenu === null){
@@ -350,7 +350,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    setupDrawing = function(){
+    setupDrawing(){
         let menu, item, types, simpleTypes, i, maxi, j, maxj, submenu, subitem;
         try{
             if (this.menu === null){this.setupEditingMenu();}
@@ -435,7 +435,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    setupTaxonomyEditing = function(){
+    setupTaxonomyEditing(){
         let itemAddTaxonomy;
         try{
             if (this.fileMenu === null){this.setupFileMenu();}
@@ -464,7 +464,7 @@ class VectorLayer {
      */
 
 
-    drawMapBounds = function(drawingType){
+    drawMapBounds(drawingType){
         try{
             this.drawingFeatures.clear();
             if (this.draw !== null){
@@ -503,7 +503,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    addDrawInteraction = function(drawingType){
+    addDrawInteraction(drawingType){
         try{
 
             if (drawingType === this.captions.strClear){
@@ -576,7 +576,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    drawStart = function(){
+    drawStart(){
         try{
             if (!this.currDrawGeometryType.match(/^((Polygon)|(Multi)|(GeometryCollection))/)){
                 this.drawingFeatures.clear();
@@ -607,7 +607,7 @@ class VectorLayer {
      * @returns {ol.geom.Geometry} A clone of the original geometry, transformed or not.
      */
 
-    transformGeom = function(geom){
+    transformGeom(geom){
         try{
             if (this.view.getProjection().getCode() === 'EPSG:3857'){
                 return geom.clone().transform('EPSG:3857', 'EPSG:4326');
@@ -635,7 +635,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    drawEnd = function(evt){
+    drawEnd(evt){
         let tmpFeat, i, maxi, j, maxj, tmpGeom, polys, arrGeoms;
         try{
             // For some feature types, it's not possible to know for sure when drawing is finished.
@@ -768,7 +768,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    drawMapBoundsEnd = function(evt){
+    drawMapBoundsEnd(evt){
         let tmpFeat, geom;
         try{
             if (typeof evt.feature !== 'undefined'){
@@ -811,7 +811,7 @@ class VectorLayer {
      */
 
 
-    showCoords = function(geom){
+    showCoords(geom){
         let strGeoJSON, teiLocation, strFullGeoJSON, geojson = new ol.format.GeoJSON();
         try{
             if (this.view.getProjection().getCode() === 'EPSG:3857'){
@@ -847,7 +847,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    addDrawnFeature = function(){
+    addDrawnFeature(){
         let tax, catNum, catPos, cat, featName, featId, feat;
         tax = this.taxonomies[this.currTaxonomy];
 
@@ -936,7 +936,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    loadGeoJSONFromString = function(geojson){
+    loadGeoJSONFromString(geojson){
 
         let listenerKey, showTax, showTaxInt;
 
@@ -1110,7 +1110,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    appendGeoJSONFromString = function(geojson){
+    appendGeoJSONFromString(geojson){
 
         let listenerKey, showTax, showTaxInt;
 
@@ -1230,7 +1230,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    downloadGeoJSON = function(){
+    downloadGeoJSON(){
         let el, geojson, mapjson, outFeats;
         try{
             geojson = new ol.format.GeoJSON();
@@ -1271,7 +1271,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    pasteGeoJSON = function(){
+    pasteGeoJSON(){
         let geojson, pastedText;
         try{
             geojson = new ol.format.GeoJSON();
@@ -1304,7 +1304,7 @@ class VectorLayer {
      *  @returns {Boolean} True (success) or false (failure).
      */
 
-    addTestingFeatures = function(){
+    addTestingFeatures(){
         /*form = document.createElement('form');
           this.textEditor = document.createElement('div');
           this.textEditor.setAttribute('id', 'holTextEditor');
@@ -1334,7 +1334,7 @@ class VectorLayer {
      * @returns {number} Total number of taxonomies constructed.
      */
 
-    readTaxonomies = function(){
+    readTaxonomies(){
         let hasName, i, maxi, j, maxj, k, maxk, props, taxName, taxPos, taxId,
             catName, catDesc, catPos, catId, catIcon, catIconDim, foundTax, foundCat, maxPos = 0;
 
@@ -1343,7 +1343,7 @@ class VectorLayer {
         // base feature which includes all the taxonomies.
 
         // Function for filtering taxonomy and category arrays by name.
-        hasName = function(element, index, array){
+        hasName(element, index, array){
             return element.name === this;
         };
 
@@ -1442,7 +1442,7 @@ class VectorLayer {
      *                    contain the category)
      */
 
-    taxonomyHasCategory = function(taxNum, catId){
+    taxonomyHasCategory(taxNum, catId){
         let i, maxi;
         try{
             // First we check whether the taxonomy exists.
@@ -1481,7 +1481,7 @@ class VectorLayer {
      *                    the feature.
      */
 
-    taxonomyHasFeature = function(taxNum, featId){
+    taxonomyHasFeature(taxNum, featId){
         let i, maxi, j, maxj;
         try{
             // First we check whether the taxonomy exists.
@@ -1518,7 +1518,7 @@ class VectorLayer {
      *                    false if the process fails or is aborted.
      */
 
-    newTaxonomy = function(){
+    newTaxonomy(){
         let taxName, taxId;
         try{
             //Now ask for a name from the user.
@@ -1556,7 +1556,7 @@ class VectorLayer {
      *                    false if the process fails or is aborted.
      */
 
-    newCategory = function(){
+    newCategory(){
         let catName, catId, catDesc, catPos;
         try{
             //Now ask for a name from the user.
@@ -1598,7 +1598,7 @@ class VectorLayer {
      * @returns {element | null} HTML element with id 'splash'.
      */
 
-    getSplashScreen = function(){
+    getSplashScreen(){
         let loading, spinner;
         try{
             this.splash = document.getElementById('splash');
@@ -1636,7 +1636,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    afterLoading = function(){
+    afterLoading(){
         /*  var i, maxi;
         */  try{
             if (this.splash !== null){
@@ -1691,7 +1691,7 @@ class VectorLayer {
      * @returns {Boolean} true (something was needed) or false (nothing was needed).
      */
 
-    browserShims = function(){
+    browserShims(){
         let rightBox, result = false;
         try{
             // Safari 9.1 and IE 11 bug with Flex container sizing.
@@ -1722,7 +1722,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    zoomToBox = function(boxExtent){
+    zoomToBox(boxExtent){
         let featId, featNum, featNums = [];
         try{
             this.source.forEachFeatureInExtent(boxExtent, function(hitFeature){
@@ -1758,7 +1758,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    buildToolbar = function(){
+    buildToolbar(){
         let form, div, img;
         try{
             form = document.createElement('form');
@@ -1836,7 +1836,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    buildTaxonomySelector = function(){
+    buildTaxonomySelector(){
         let i, maxi, opt, wrapper;
         try{
             if (this.taxonomySelector !== null){
@@ -1885,7 +1885,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    changeTaxonomy = function(sender){
+    changeTaxonomy(sender){
         let newTax;
         try{
             newTax = sender.selectedIndex;
@@ -1915,7 +1915,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    buildNavPanel = function(){
+    buildNavPanel(){
         let doc = document, form, rightBox, navPanel, navCloseDiv, navHeader, navSearchButton,
             img, chkShowAll, navCaption, navInput, catUl, cats, catMax, catNum, catLi, catLiChk,
             catTitleSpan, thisCatUl, thisCatFeatures, f, props, thisFeatLi,
@@ -2097,7 +2097,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    buildTimeline = function(){
+    buildTimeline(){
         try{
             if (!this.timelineData){
                 return true;
@@ -2209,7 +2209,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    showTimeline = function(show){
+    showTimeline(show){
         try{
             let displayVal = show ? 'grid' : 'none';
             let timelines = document.getElementsByClassName('timeline');
@@ -2236,7 +2236,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    toggleTimeline = function(sender){
+    toggleTimeline(sender){
         try{
             // Whatever happens, we're resetting the play button to show the play icon.
             this.playImg.setAttribute('src', 'images/play-circle.svg');
@@ -2293,7 +2293,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    timelineChange = function(sender){
+    timelineChange(sender){
         try{
             let val = sender.value;
 
@@ -2372,7 +2372,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    timelinePlay = function(){
+    timelinePlay(){
         let i, maxi;
         try{
             // Are we already playing? If so, stop.
@@ -2430,7 +2430,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    timelineStep = function(step){
+    timelineStep(step){
         // Stop playing if we're playing.
         if (this.playInterval !== null){this.timelinePlay();}
         (step < 0)? this.timeline.stepDown() : this.timeline.stepUp();
@@ -2450,7 +2450,7 @@ class VectorLayer {
      *                   identifier is not found.
      */
 
-    getCatNumFromId = function(catId, defVal){
+    getCatNumFromId(catId, defVal){
         let i, maxi, result = defVal;
         try{
             if ((this.currTaxonomy > -1) && (this.currTaxonomy < this.taxonomies.length)){
@@ -2481,7 +2481,7 @@ class VectorLayer {
      *                   identifier is not found.
      */
 
-    getTaxNumFromId = function(taxId, defVal){
+    getTaxNumFromId(taxId, defVal){
         let i, maxi;
         try{
             for (i=0, maxi=this.taxonomies.length; i<maxi; i++){
@@ -2511,7 +2511,7 @@ class VectorLayer {
      *                   identifier is not found.
      */
 
-    getFeatNumFromId = function(featId, defVal){
+    getFeatNumFromId(featId, defVal){
         let i, maxi, result = defVal;
         for (i=0, maxi=this.features.length; i<maxi; i++){
             if (this.features[i].getId() === featId){
@@ -2537,7 +2537,7 @@ class VectorLayer {
      *                   feature, or -1 if it is not found.
      */
 
-    getCurrFirstCatNum = function(featId){
+    getCurrFirstCatNum(featId){
         let cats, feats, i, maxi, j, jmax, result = -1;
         try{
             if ((this.currTaxonomy < 0)||(this.currTaxonomy >= this.taxonomies.length)){
@@ -2578,7 +2578,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    showHideFeature = function(show, featNum, catNum){
+    showHideFeature(show, featNum, catNum){
         let thisFeature, featId, cat, i, maxi;
         try{
             if ((featNum < 0) || (featNum >= this.features.length)){return false;}
@@ -2652,7 +2652,7 @@ class VectorLayer {
      *                          by the operation.
      */
 
-    showHideAllFeatures = function(sender, show){
+    showHideAllFeatures(sender, show){
         let i, maxi, j, maxj, showVal, currTaxCats, feats, featuresChanged;
         if (sender === null){
             showVal = show;
@@ -2709,7 +2709,7 @@ class VectorLayer {
      */
 
 
-    showHideFeatureFromNav = function(sender, featNum, catNum){
+    showHideFeatureFromNav(sender, featNum, catNum){
         // If a change has resulted from an action happening in code rather
         // than a user interaction, then do nothing.
         let success = false;
@@ -2744,7 +2744,7 @@ class VectorLayer {
      */
 
 
-    selectFeatureFromNav = function(featNum, catNum){
+    selectFeatureFromNav(featNum, catNum){
         let success = false;
         if (this.featureDisplayStatus !== constants.NAV_IDLE){return success;}
 
@@ -2771,7 +2771,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    harmonizeCategoryCheckboxes = function(){
+    harmonizeCategoryCheckboxes(){
         // Variables for tracking what we need to know for the
         // all-controlling checkbox chkShowAll.
         let allChecked = true, allUnchecked = true, allIndeterminate = false, i, maxi, j, maxj, hasChecked, hasUnchecked, childInputs;
@@ -2832,7 +2832,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    showHideCategory = function(sender, catNum){
+    showHideCategory(sender, catNum){
         let featNum, featNums = [], show, childInputs, i, maxi;
         if (this.featureDisplayStatus != constants.NAV_IDLE){return false;}
 
@@ -2868,7 +2868,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    centerOnFeatures = function(featNums){
+    centerOnFeatures(featNums){
         let i, maxi, geomCol, extent, el, leftMargin = 20, rightMargin, bottomMargin = 20, opts, geoms = [];
         try{
             for (i=0, maxi=featNums.length; i<maxi; i++){
@@ -2920,7 +2920,7 @@ class VectorLayer {
      * @returns {Boolean} true (succeeded) or false (failed).
      */
 
-    setMapBounds = function(extent){
+    setMapBounds(extent){
         let opts;
         opts = {
             duration: 1000
@@ -2950,7 +2950,7 @@ class VectorLayer {
      * @returns {number} the index of a feature if one is found, or -1.
      */
 
-    selectFeatureFromPixel = function(pixel){
+    selectFeatureFromPixel(pixel){
         let featNum, hitFeature = null, fSize = -1;
         this.map.forEachFeatureAtPixel(pixel, function(feature, layer){
             let thisSize, geom, geomType, showing;
@@ -2994,7 +2994,7 @@ class VectorLayer {
      * @returns {number} the index of a feature if one is found, or -1.
      */
 
-    selectFeatureFromId = function(featId){
+    selectFeatureFromId(featId){
         let featNum = -1, catNum = -1;
         try{
             featNum = this.getFeatNumFromId(featId, -1);
@@ -3036,7 +3036,7 @@ class VectorLayer {
      * @returns {number} the index of a feature if one is selected, or -1.
      */
 
-    setSelectedFeature = function(featNum, jumpInNav){
+    setSelectedFeature(featNum, jumpInNav){
         let currFeat, props, ul, showDoc, readMore, catNum, cat, catLi, featLi, i, imax;
         // First deselect any existing selection.
         try{
@@ -3116,7 +3116,7 @@ class VectorLayer {
      * @returns {boolean} true for success, false for failure.
      */
 
-    editSelectedFeature = function(){
+    editSelectedFeature(){
         let tmpFeat, evt;
         try{
             if ((this.selectedFeature > -1)&&(this.allowDrawing)){
@@ -3165,7 +3165,7 @@ class VectorLayer {
      *                   is found, or -1.
      */
 
-    deselectFeature = function(){
+    deselectFeature(){
     };
 
     /**
@@ -3183,7 +3183,7 @@ class VectorLayer {
      *              false if not.
      */
 
-    parseSearch = function(){
+    parseSearch(){
         let result, i, maxi, catIds, arrCatIds, catChk, catNum, featIds,
             arrFeatIds, featNum, arrFeatNums, docPath, currLoc, drawing,
             upload;
@@ -3307,7 +3307,7 @@ class VectorLayer {
      * @returns {Boolean} true (success) or false (failure).
      */
 
-    showHideMapSearch = function(sender){
+    showHideMapSearch(sender){
         let caption, input;
         try{
             //alert(sender.innerHTML);
@@ -3347,7 +3347,7 @@ class VectorLayer {
      * @returns {number} the number of search hits found.
      */
 
-    doLocationSearch = function(doSearch){
+    doLocationSearch(doSearch){
         let i, j, maxi, maxj, strSearch, hits, allHits, nameRe, descendants, allDescendants, items;
         try{
             strSearch = this.navInput.value;
@@ -3418,7 +3418,7 @@ class VectorLayer {
      * @returns {boolean} true (success) or false (failure).
      */
 
-    showDocument = function(docPath){
+    showDocument(docPath){
         try{
             this.docDisplayFrame.setAttribute('src', this.linkPrefix + docPath);
             this.docDisplayDiv.classList.remove('hidden');
@@ -3446,7 +3446,7 @@ class VectorLayer {
      * @returns {boolean} true (success) or false (failure).
      */
 
-    rewriteHolLinks = function(el){
+    rewriteHolLinks(el){
         let links, elMatch, i, maxi, link, featId, docUrl;
         try{
             if (el == null){return false;}
@@ -3487,7 +3487,7 @@ class VectorLayer {
      *       standard navigator.geolocation functionality.
      */
 
-    toggleTracking = function(){
+    toggleTracking(){
         try{
             let track = (this.geolocationId === -1), msg;
 
@@ -3527,7 +3527,7 @@ class VectorLayer {
      * @returns {boolean} true (success) or false (failure).
      */
 
-    trackPosition = function(position) {
+    trackPosition(position) {
         let coords, extent, rightMargin, leftMargin = 0, opts;
         try {
             coords = ol.proj.transform([position.coords.longitude, position.coords.latitude], 'EPSG:4326', 'EPSG:3857');
