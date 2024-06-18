@@ -1,5 +1,5 @@
-
 'use strict';
+
 /**
  * Util class contains utility methods
  * and constants for the rest of the classes.
@@ -10,63 +10,71 @@
  */
 
 class Util {
+    static tenColors;
+    static colorSet;
+    static lineOpacity;
+    static shapeOpacity;
+    static tenTranslucentColors;
+    static translucentColorSet;
 
-    /**
-     * Ten maximally distinct colours, useful when using many categories on a layer.
-     * @type {string[]}
-     * @memberOf Util
-     */
-    tenColors = ['rgb(85, 0, 0)', 'rgb(0, 85, 0)', 'rgb(0, 0, 85)', 'rgb(85, 85, 0)', 'rgb(85, 0, 85)', 'rgb(0, 85, 85)', 'rgb(150, 0, 0)', 'rgb(0, 130, 0)', 'rgb(0, 0, 150)', 'rgb(0, 0, 0)'];
-    /**
-     * @description Set of distinct colours, initially set to the ten defaults.
-     * The end-user can override these colours if they wish. By default,
-     * identical to Util.tenColors.
-     * @type {string[]}
-     * @memberOf Util
-     */
-    colorSet = this.tenColors;
-    /**
-     * @description Opacity setting for lines and the outline of shapes, defaulting to '0.6'.
-     *              Made into a variable so that projects can override it.
-     * @type {string}
-     * @memberOf Util
-     */
-    lineOpacity = '0.6';
+    static {
+        /**
+         * Ten maximally distinct colours, useful when using many categories on a layer.
+         * @type {string[]}
+         * @memberOf Util
+         */
+        this.tenColors = ['rgb(85, 0, 0)', 'rgb(0, 85, 0)', 'rgb(0, 0, 85)', 'rgb(85, 85, 0)', 'rgb(85, 0, 85)', 'rgb(0, 85, 85)', 'rgb(150, 0, 0)', 'rgb(0, 130, 0)', 'rgb(0, 0, 150)', 'rgb(0, 0, 0)'];
+        /**
+         * @description Set of distinct colours, initially set to the ten defaults.
+         * The end-user can override these colours if they wish. By default,
+         * identical to Util.tenColors.
+         * @type {string[]}
+         * @memberOf Util
+         */
+        this.colorSet = this.tenColors;
+        /**
+         * @description Opacity setting for lines and the outline of shapes, defaulting to '0.6'.
+         *              Made into a variable so that projects can override it.
+         * @type {string}
+         * @memberOf Util
+         */
+        this.lineOpacity = '0.6';
 
-    /**
-     * @description Opacity setting for the interior of shapes, defaulting to '0.2'.
-     *              Made into a variable so that projects can override it.
-     * @type {string}
-     * @memberOf Util
-     */
-    shapeOpacity = '0.2';
-    /**
-     * @description Array of strings representing ten maximally distinct colours,
-     * with an alpha setting of Util.lineOpacity (default 0.6).
-     * @type {string[]}
-     * @memberOf Util
-     */
-    tenTranslucentColors = [];
+        /**
+         * @description Opacity setting for the interior of shapes, defaulting to '0.2'.
+         *              Made into a variable so that projects can override it.
+         * @type {string}
+         * @memberOf Util
+         */
+        this.shapeOpacity = '0.2';
+        /**
+         * @description Array of strings representing ten maximally distinct colours,
+         * with an alpha setting of Util.lineOpacity (default 0.6).
+         * @type {string[]}
+         * @memberOf Util
+         */
+        this.tenTranslucentColors = [];
 
 
-    /**
-     * @description Below anonymous function just populates the tenTranslucentColors array.
-     */
-    function() {
-        let i, maxi;
-        for (i = 0, maxi = this.tenColors.length; i < maxi; i++) {
-            this.tenTranslucentColors.push(this.getColorWithAlpha(i, this.lineOpacity));
-        }
-    };
+        /**
+         * @description Below anonymous function just populates the tenTranslucentColors array.
+         */
+        void function() {
+            let i, maxi;
+            for (i = 0, maxi = this.tenColors.length; i < maxi; i++) {
+                Util.tenTranslucentColors.push(Util.getColorWithAlpha(i, Util.lineOpacity));
+            }
+        }();
 
-    /**
-     * @description Set of distinct colours, with an alpha setting of 0.6. Initially set to
-     * the Util.tenTranslucentColors, but can be overridden by the end user.
-     * @type {string[]}
-     * @memberOf Util
-     */
+        /**
+         * @description Set of distinct colours, with an alpha setting of 0.6. Initially set to
+         * the Util.tenTranslucentColors, but can be overridden by the end user.
+         * @type {string[]}
+         * @memberOf Util
+         */
 
-    translucentColorSet = this.tenTranslucentColors;
+        this.translucentColorSet = this.tenTranslucentColors;
+    }
 
     constructor() {
     }
@@ -83,7 +91,7 @@ class Util {
      * @param {any[]} midPoint
      */
 
-    getPointGeometry(dx, end, start, dy, rotation, midPoint) {
+    static getPointGeometry(dx, end, start, dy, rotation, midPoint) {
         dx = end[0] - start[0];
         dy = end[1] - start[1];
         rotation = Math.atan2(dy, dx);
@@ -100,7 +108,7 @@ class Util {
      * @description Outputs the version string to the console and returns it too.
      * @returns {string} The same string as is output to the console.
      */
-    showVersion() {
+    static showVersion() {
         const verString = 'hol (HCMC OpenLayers) JS version ' + VERSION + ' tested with OpenLayers ' + OLVERSION + '.';
         console.log(verString);
         return verString;
@@ -116,7 +124,7 @@ class Util {
      * @param {string} s The input string.
      * @returns {number} A 32-bit integer.
      */
-    crudeHash(s) {
+    static crudeHash(s) {
         let hash = 0, strlen = s.length, i, c;
         if (strlen === 0) {
             return hash;
@@ -163,7 +171,7 @@ class Util {
      * @param  {number} catNum Number of the category.
      * @return {string}
      */
-    getTranslucentColorForCategory(catNum) {
+    static getTranslucentColorForCategory(catNum) {
         return this.translucentColorSet[catNum % this.translucentColorSet.length];
     };
 
@@ -175,7 +183,7 @@ class Util {
      * @return {number[]} Array of two integers for x and y.
      * @param extent
      */
-    getCenter(extent) {
+    static getCenter(extent) {
         let x, y;
         x = extent[0] + (extent[2] - extent[0]);
         y = extent[1] + (extent[3] - extent[1]);
@@ -190,7 +198,7 @@ class Util {
      * @param  {string} xml XML code.
      * @return {string} Escaped string
      */
-    escapeXml(xml) {
+    static escapeXml(xml) {
         return xml.replace(/</g, '&lt;').replace(/&amp;/g, '&amp;amp;').replace(/\n/g, '<br/>');
     };
 
@@ -291,7 +299,7 @@ class Util {
      *                   returns an incremented counter value.
      * @returns {function} a function which returns an integer.
      */
-    counter = (function () {
+    static counter = (function () {
         let c = 1000; //initial value.
         return function () {
             return c++;
@@ -608,7 +616,7 @@ class Util {
      * @param {string} inStr String to show in alert.
      * @memberof Util
      */
-    test(inStr) {
+    static test(inStr) {
         alert('Util.test has been called with ' + inStr + '.');
     };
 
@@ -640,7 +648,7 @@ class Util {
      * @param {XMLHttpRequestResponseType} responseType the mime type of the target document.
      * @return Promise
      */
-    ajaxRetrieve(url, responseType) {
+    static ajaxRetrieve(url, responseType) {
         // Create new promise with the Promise() constructor;
         // This has as its argument a function
         // with two parameters, resolve and reject
@@ -688,4 +696,4 @@ class Util {
 
 }
 
-export { Util }
+export {Util}
