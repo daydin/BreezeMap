@@ -61,7 +61,7 @@ class Util {
          */
         void function() {
             let i, maxi;
-            for (i = 0, maxi = this.tenColors.length; i < maxi; i++) {
+            for (i = 0, maxi = Util.tenColors.length; i < maxi; i++) {
                 Util.tenTranslucentColors.push(Util.getColorWithAlpha(i, Util.lineOpacity));
             }
         }();
