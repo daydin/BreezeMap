@@ -259,7 +259,7 @@ class VectorLayer {
     }
 
 
-    setupEditingMenu(){
+    setupEditingMenu = function(){
         try{
             if (this.menu === null){
                 this.menu = document.createElement('ul');
@@ -1343,7 +1343,7 @@ class VectorLayer {
         // base feature which includes all the taxonomies.
 
         // Function for filtering taxonomy and category arrays by name.
-        hasName(element, index, array){
+        hasName = function(element, index, array){
             return element.name === this;
         };
 
