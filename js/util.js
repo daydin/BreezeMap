@@ -372,7 +372,6 @@ class Util {
             //segment is long enough to fit one in.
             if (feature.getProperties().directional) {
                 geometry = feature.getGeometry();
-                // todo: check to see if this is working
                 geometry.forEachSegment((start, end) => {
                         let pixLen = Math.round(new ol.geom.LineString([start, end]).getLength() / resolution);
                         if (pixLen > 25) {
@@ -449,7 +448,7 @@ class Util {
      *                    rendered normally on the map.
      * @param {number} catNum Index of the category in its array.
      * @param {string} catIcon Path to the icon for this category
-     (may be null).
+     (might be null).
      * @param {Array}  catIconDim Array of width,height in pixels of the
      *                            category icon (may be null).
      * @returns {function} ol.FeatureStyleFunction
@@ -505,7 +504,6 @@ class Util {
             //segment is long enough to fit one in.
             if (feature.getProperties().directional) {
                 geometry = feature.getGeometry();
-                // todo: check to see if this is working
                 geometry.forEachSegment((start, end) => {
                     let pixLen = Math.round(new ol.geom.LineString([start, end]).getLength() / resolution);
                     if (pixLen > 25) {
