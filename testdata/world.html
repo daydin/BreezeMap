@@ -9,7 +9,9 @@
         <link rel="stylesheet" href="css/hcmc_ol.css" type="text/css"/>
       
         <script src="ol/ol.js" type="text/ecmascript"></script>
-        <script src="js/hcmc_ol.js" type="text/ecmascript"></script>
+        <script src="js/constants.js" type="module"></script>
+        <script src="js/util.js" type="module"></script>
+        <script src="js/vectorlayer.js" type="module"></script>
       <style type="text/css">
 <!--        
         #opacitySlider{
@@ -104,7 +106,7 @@
         document.getElementById('opacitySlider').onchange();
   
 //Now let's create a hol vector layer for all our features.
-        holLayer = new hol.VectorLayer(map, featureJSONFile, {allowTaxonomyEditing: true, 
+        holLayer = new VectorLayer(map, featureJSONFile, {allowTaxonomyEditing: true, 
                                                               allowDrawing: true,
                                                               allowUpload: true,
                                                               allowUserTracking: true,
